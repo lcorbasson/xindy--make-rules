@@ -43,7 +43,7 @@ TEMP=`mktemp /tmp/xindy.XXXXXX` || exit 1
 echo "" >$TEMP.xdy
 
 DP="tex"
-STYLE="styles/makeindex.xdy"
+STYLE="makeindex"
 
 while getopts "m:v:d:e:tnls:" OPT
 do
@@ -102,7 +102,7 @@ do
       DP="lout"
       ;;
     "s")
-      STYLE="$OPTARG.xdy"
+      STYLE="$OPTARG"
       ;;
   esac
 done
@@ -140,7 +140,7 @@ echo "(use-rule-set :run 2 :rule-set \
 echo "(use-rule-set :run 3 :rule-set \
 	($RESOLVESPECIAL))" >>$TEMP.xdy
 
-echo "(require \"$STYLE\")" >>$TEMP.xdy
+echo "(require \"styles/$STYLE.xdy\")" >>$TEMP.xdy
 
 xindy $TEMP.xdy $DATA.raw
 
