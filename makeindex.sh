@@ -327,7 +327,7 @@ if [ "$LOC" = "" ] ; then
 fi
 
 shift $[$#-1]
-DATA=$1
+DATA=`basename $1 .idx`
 
 tex2xindy <$DATA.idx >$DATA.raw
 
