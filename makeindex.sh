@@ -1,7 +1,8 @@
 #!/bin/sh
 #
-# This script is at the same time the documentation for the localization architecture
-# used in Xindy/make-rules.
+# This script is at the same time the documentation for the 
+# localization architecture used in Xindy/make-rules.
+# (c) 2001 Martin Vermeer
 #
 # Print out help text:
 #
@@ -15,13 +16,17 @@ if [ "$1" = "" ] ; then
   echo "Multiple -m options allowed; -m always after corresponding -v, -e."
   echo ""
   echo "Languages <lang>:"
+  echo "  albanian"
   echo "  belarusian  finnish         swedish"
-  echo "  bulgarian   french          norwegian"
+  echo "  bulgarian   french          hungarian"
+  echo "  icelandic   lower-sorbian   norwegian"
   echo "  croatian    general         polish"
+  echo "  portuguese  romanian        slovenian"
   echo "  czech       german          russian"
   echo "  danish      greek           serbian"
   echo "  english     slovak          ukrainian"
   echo "  esperanto   macedonian      spanish"
+  echo "  turkish"
   echo ""
   echo "Variants <var>:"
   echo "  german:  duden, din5007"
@@ -69,7 +74,7 @@ do
         "german")
         ENC_="latin1"
         PRE="de"
-        VAR_="DIN5007-"
+        VAR_="din5007-"
         ;;
         "belarusian")
         ENC_="iso88595"
@@ -116,7 +121,7 @@ do
         PRE="pl"
         ;;
         "russian")
-        ENC_="latin1"
+        ENC_="koi8-r"
         PRE="ru"
         ;;
         "serbian")
@@ -140,6 +145,42 @@ do
         "ukrainian")
         ENC_="koi8-u"
         PRE="uk"
+        ;;
+        "albanian")
+        ENC_="latin1"
+        PRE="sq"
+        ;;
+        "hungarian")
+        ENC_="latin2"
+        PRE="hu"
+        ;;
+        "icelandic")
+        ENC_="latin1"
+        PRE="is"
+        ;;
+        "lower-sorbian")
+        ENC_="latin2"
+        PRE="s1"
+        ;;
+        "lower-sorbian")
+        ENC_="latin2"
+        PRE="s1"
+        ;;
+        "portuguese")
+        ENC_="latin1"
+        PRE="pt"
+        ;;
+        "romanian")
+        ENC_="latin2"
+        PRE="ro"
+        ;;
+        "slovenian")
+        ENC_="latin2"
+        PRE="sl"
+        ;;
+        "turkish")
+        ENC_="latin3"
+        PRE="tr"
         ;;
      esac
       IGNORESPECIAL="$IGNORESPECIAL \"$PRE-ignore-special\"" 
