@@ -6,12 +6,18 @@ INSTDIR=/usr/local/lib/xindy/modules/lang
 endif
 
 XDYSLATIN1= \
+  albanian/latin1.xdy \
   danish/latin1.xdy \
   english/ascii.xdy \
   finnish/latin9.xdy finnish/cp1252.xdy \
   french/latin9.xdy french/cp1252.xdy \
   german/din5007-latin1.xdy german/duden-latin1.xdy \
+  greek/translit-tex.xdy \
+  icelandic/latin1.xdy \
   norwegian/latin1.xdy \
+  portuguese/latin1.xdy \
+  russian/translit-tex.xdy \
+  russian/translit-tgl-tex.xdy \
   spanish/modern-latin1.xdy spanish/traditional-latin1.xdy \
   swedish/latin1.xdy \
   general/latin1.xdy
@@ -19,12 +25,17 @@ XDYSLATIN1= \
 XDYSLATIN2= \
   croatian/latin2.xdy croatian/cp1250.xdy \
   czech/latin2.xdy czech/cp1250.xdy \
+  hungarian/latin2.xdy hungarian/cp1250.xdy \
+  lower-sorbian/latin2.xdy lower-sorbian/cp1250.xdy \
   polish/latin2.xdy polish/cp1250.xdy \
+  romanian/latin2.xdy \
+  slovenian/latin2.xdy slovenian/cp1250.xdy \
   slovak/small-latin2.xdy slovak/small-cp1250.xdy \
   slovak/large-latin2.xdy slovak/large-cp1250.xdy
 
 XDYSLATIN3= \
-  esperanto/latin3.xdy
+  esperanto/latin3.xdy \
+  turkish/latin3.xdy
 
 XDYSCYR= \
   belarusian/isoir111.xdy belarusian/iso88595.xdy belarusian/cp1251.xdy \
@@ -38,29 +49,41 @@ XDYSOTHER= \
   greek/iso88597.xdy
 
 XDYSUTF8= \
-  danish/utf8.xdy \
-  english/utf8.xdy \
-  finnish/utf8.xdy \
-  french/utf8.xdy \
-  german/din5007-utf8.xdy german/duden-utf8.xdy \
-  norwegian/utf8.xdy \
-  spanish/modern-utf8.xdy spanish/traditional-utf8.xdy \
-  swedish/utf8.xdy \
-  general/utf8.xdy \
-  croatian/utf8.xdy \
-  czech/utf8.xdy \
-  polish/utf8.xdy \
-  slovak/small-utf8.xdy slovak/large-utf8.xdy \
-  esperanto/utf8.xdy \
+  albanian/utf8.xdy \
   belarusian/utf8.xdy \
   bulgarian/utf8.xdy \
+  croatian/utf8.xdy \
+  czech/utf8.xdy \
+  danish/utf8.xdy \
+  english/utf8.xdy \
+  esperanto/utf8.xdy \
+  finnish/utf8.xdy \
+  french/utf8.xdy \
+  general/utf8.xdy \
+  german/din5007-utf8.xdy german/duden-utf8.xdy \
+  greek/translit-utf8.xdy \
+  greek/utf8.xdy \
+  hungarian/utf8.xdy \
+  icelandic/utf8.xdy \
+  lower-sorbian/utf8.xdy \
   macedonian/utf8.xdy \
+  norwegian/utf8.xdy \
+  polish/utf8.xdy \
+  portuguese/utf8.xdy \
+  romanian/utf8.xdy \
   russian/utf8.xdy \
+  russian/translit-utf8.xdy \
+  russian/translit-tgl-utf8.xdy \
   serbian/utf8.xdy \
-  ukrainian/utf8.xdy \
-  greek/utf8.xdy
+  slovak/small-utf8.xdy slovak/large-utf8.xdy \
+  slovenian/utf8.xdy \
+  spanish/modern-utf8.xdy spanish/traditional-utf8.xdy \
+  swedish/utf8.xdy \
+  turkish/utf8.xdy \
+  ukrainian/utf8.xdy
 
-XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSCYR) $(XDYSOTHER)
+XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSLATIN6) \
+  $(XDYSCYR) $(XDYSOTHER)
 
 INDS=$(XDYS:.xdy=.ind)
 CMPS=$(XDYS:.xdy=.ind.cmp)
@@ -69,24 +92,35 @@ all : $(XDYS)
 utf8 : $(XDYSUTF8)
 
 DOCSLATIN1= \
+  albanian/latin1-doc.tex \
   danish/latin1-doc.tex \
   english/ascii-doc.tex \
   finnish/cp1252-doc.tex \
   french/cp1252-doc.tex \
+  general/latin1-doc.tex \
   german/din5007-latin1-doc.tex german/duden-latin1-doc.tex \
+  greek/translit-tex-doc.tex \
+  icelandic/latin1-doc.tex \
   norwegian/latin1-doc.tex \
+  portuguese/latin1-doc.tex \
+  russian/translit-tex-doc.tex \
+  russian/translit-tgl-tex-doc.tex \
   spanish/modern-latin1-doc.tex spanish/traditional-latin1-doc.tex \
-  swedish/latin1-doc.tex \
-  general/latin1-doc.tex
+  swedish/latin1-doc.tex
 
 DOCSLATIN2= \
   croatian/latin2-doc.tex \
   czech/latin2-doc.tex \
+  hungarian/latin2-doc.tex \
+  lower-sorbian/latin2-doc.tex \
   polish/latin2-doc.tex \
-  slovak/small-latin2-doc.tex slovak/large-latin2-doc.tex
+  romanian/latin2-doc.tex \
+  slovak/small-latin2-doc.tex slovak/large-latin2-doc.tex \
+  slovenian/latin2-doc.tex
 
 DOCSLATIN3= \
-  esperanto/latin3-doc.tex
+  esperanto/latin3-doc.tex \
+  turkish/latin3-doc.tex
 
 DOCSCYR= \
   belarusian/cp1251-doc.tex \
@@ -99,7 +133,8 @@ DOCSCYR= \
 DOCSOTHER= \
   greek/iso88597-doc.tex
 
-DOCS= $(DOCSLATIN1) $(DOCSLATIN2) $(DOCSLATIN3) $(DOCSCYR) $(DOCSOTHER)
+DOCS= $(DOCSLATIN1) $(DOCSLATIN2) $(DOCSLATIN3) $(DOCSLATIN6) \
+  $(DOCSCYR) $(DOCSOTHER)
 
 alphabets-inc.tex : $(DOCS)
 	$(RM) $@
@@ -121,6 +156,10 @@ alphabets-inc.tex : $(DOCS)
 alphabets-doc.dvi : alphabets-doc.tex alphabets-inc.tex
 	latex alphabets-doc.tex
 	latex alphabets-doc.tex
+
+alphabets-doc.pdf : alphabets-doc.tex alphabets-inc.tex
+	pdflatex alphabets-doc.tex
+	pdflatex alphabets-doc.tex
 
 test : $(INDS)
 
@@ -190,15 +229,18 @@ newcmp : $(CMPS)
 %utf8.pl : %iso88597.pl
 	recode iso-8859-7..utf-8 <$< >$@
 
+%tex.pl : %utf8.pl
+	sed -f utf8-to-tex.sed <$< >$@
+
 install : all
 	mkdir -p $(INSTDIR)
 	cp -P */*.xdy $(INSTDIR)
 
 clean :
 	$(RM) $(XDYS) $(XDYSUTF8) *~ */*~ *.aux *.dvi *.toc *.log *.ps \
-	  alphabets-inc.tex */*-doc.tex */*.raw */*.xlg */*.ind \
-	  */*cp1250.pl */*cp1251.pl */*cp1252.pl */*iso88595.pl \
-	  */*utf8.pl */*-test.xdy
+	  alphabets-inc.tex */*-doc.tex */*.raw */*.xlg */*.ind */*-test.xdy
+#	  */*cp1250.pl */*cp1251.pl */*cp1252.pl */*iso88595.pl \
+#	  */*utf8.pl
 
 realclean : clean
 	$(RM) */*.ind.cmp

@@ -11,28 +11,34 @@ if ($prefix) {
     $prefix = $prefix . '-';
 }
 
-$begin = 127 if ($script eq "cyrillic");
-$begin = 180 if ($script eq "latin");
+$begin =  97 if ($script eq "cyrillic");
+$begin = 160 if ($script eq "latin");
 $begin =  65 if ($script eq "greek");
   
 if (!$begin) {
-    $begin = 180;
+    $begin = 160;
 }
 
 print "Alphabet has " . @{$alphabet} . " elements.\n";
 
 for ($i = 0; $i < @{$alphabet}; $i++) {
-  $letter = $alphabet->[$i][0];
-  $token = chr($i+$begin);
-  if ($alphabet->[$i][1]) {  
-    print XDY "(define-letter-group \"$letter\"";
-    print XDY " :after \"$after\"" if ($i);
-    print XDY " :prefixes (\"$token\"))\n";
-  $after = $letter;
+  if (defined($alphabet->[$i][0])) {  
+    $letter = $alphabet->[$i][0];
+    $token = chr($i+$begin);
+    if ($after ne $letter) {
+      print XDY "\"))\n" if ($i);
+      print XDY "(define-letter-group \"$letter\"";
+      print XDY " :after \"$after\"" if ($i);
+      print XDY " :prefixes (\"";
+    } else {
+      print XDY "\" \"";
+    }
+    print XDY "$token";
+    $after = $letter;
   }
 }
 
-print XDY "\n";
+print XDY "\"))\n\n";
 
 $ref = \$i;
 $offset = $begin;
@@ -123,10 +129,9 @@ print_tokens($prefix . "resolve-special");
   print DOC "}\n\n";
   print DOC "\\subsubsection{Alphabet}\n";
   print DOC "\\icod\\fcod\n";
-  print DOC "\\begin{tabbing}\n";
-  print DOC "MMM\\=\\kill\n";
+  print DOC "\\begin{flushleft}\n";
   print DOC join("\\\\\n", (@m));
-  print DOC "\n\\end{tabbing}\n";
+  print DOC "\n\\end{flushleft}\n";
   print DOC "\\idef\\fdef\n";
 
 # ligatures
