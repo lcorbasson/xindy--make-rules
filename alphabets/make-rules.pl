@@ -226,7 +226,9 @@ sub make_tokens {
     for ($j = 1; $j < @{$alphabet->[$i]}; $j++) {
       for ($k = 0; $k < @{$alphabet->[$i][$j]}; $k++) {
         $token = chr($f*$$ref+$offset);
-        $tokens{$alphabet->[$i][$j][$k]} = $token;
+	if ($alphabet->[$i][$j][$k]) {
+	  $tokens{$alphabet->[$i][$j][$k]} = $token;
+	}
       }
     }
   }
