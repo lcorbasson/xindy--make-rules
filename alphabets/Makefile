@@ -9,21 +9,20 @@ endif
 
 XDYSLATIN1= \
   albanian/latin1.xdy \
-  danish/latin1.xdy \
-  english/ascii.xdy \
+  danish/latin9.xdy danish/cp1252.xdy \
+  dutch/ij-as-ij-latin1.xdy \
+  english/latin9.xdy english/cp1252.xdy \
+  estonian/latin9.xdy estonian/cp1252.xdy \
   finnish/latin9.xdy finnish/cp1252.xdy \
   french/latin9.xdy french/cp1252.xdy \
   german/din5007-latin1.xdy german/duden-latin1.xdy \
-  greek/translit-tex.xdy \
-  icelandic/latin1.xdy \
+  icelandic/latin9.xdy icelandic/cp1252.xdy \
   italian/latin1.xdy \
   norwegian/latin1.xdy \
   portuguese/latin1.xdy \
-  russian/translit-iso-tex.xdy \
   spanish/modern-latin1.xdy spanish/traditional-latin1.xdy \
-  swedish/latin1.xdy \
-  general/latin9.xdy general/cp1252.xdy \
-  dutch/latin1.xdy 
+  swedish/latin9.xdy swedish/cp1252.xdy \
+  general/latin9.xdy general/cp1252.xdy
 
 XDYSLATIN2= \
   croatian/latin2.xdy croatian/cp1250.xdy \
@@ -39,8 +38,11 @@ XDYSLATIN2= \
 
 XDYSLATIN3= \
   esperanto/latin3.xdy \
+  turkish/latin3.xdy
 
 XDYSLATIN4= \
+  greek/translit-latin4.xdy \
+  latvian/latin4.xdy \
   lithuanian/latin4.xdy \
 
 XDYSLATIN5= \
@@ -62,11 +64,14 @@ XDYSUTF8= \
   albanian/utf8.xdy \
   belarusian/utf8.xdy \
   bulgarian/utf8.xdy \
-  croatian/utf8.xdy \
   czech/utf8.xdy \
+  croatian/utf8.xdy \
   danish/utf8.xdy \
+  dutch/ij-as-ij-utf8.xdy \
+  dutch/ij-as-y-utf8.xdy \
   english/utf8.xdy \
   esperanto/utf8.xdy \
+  estonian/utf8.xdy \
   finnish/utf8.xdy \
   french/utf8.xdy \
   general/utf8.xdy \
@@ -76,7 +81,10 @@ XDYSUTF8= \
   hungarian/utf8.xdy \
   icelandic/utf8.xdy \
   italian/utf8.xdy \
+  klingon/utf8.xdy \
   kurdish/utf8.xdy \
+  latin/utf8.xdy \
+  latvian/utf8.xdy \
   lithuanian/utf8.xdy \
   lower-sorbian/utf8.xdy \
   macedonian/utf8.xdy \
@@ -107,29 +115,29 @@ utf8 : $(XDYSUTF8)
 
 DOCSLATIN1= \
   albanian/latin1-doc.tex \
-  croatian/tex-doc.tex \
-  danish/latin1-doc.tex \
-  english/ascii-doc.tex \
-  dutch/tex-doc.tex \
+  danish/cp1252-doc.tex \
+  dutch/ij-as-ij-latin1-doc.tex \
+  english/cp1252-doc.tex \
   esperanto/tex-doc.tex \
+  estonian/cp1252-doc.tex \
   finnish/cp1252-doc.tex \
   french/cp1252-doc.tex \
   general/cp1252-doc.tex \
-  german/din5007-tex-doc.tex german/duden-tex-doc.tex \
-  greek/translit-tex-doc.tex \
-  icelandic/latin1-doc.tex \
+  german/din5007-latin1-doc.tex german/duden-latin1-doc.tex \
+  greek/translit-latin4-doc.tex \
+  icelandic/cp1252-doc.tex \
   italian/latin1-doc.tex \
   kurdish/tex-doc.tex \
   lithuanian/tex-doc.tex \
   norwegian/latin1-doc.tex \
   portuguese/latin1-doc.tex \
   romanian/tex-doc.tex \
-  russian/translit-iso-tex-doc.tex \
   spanish/modern-latin1-doc.tex spanish/traditional-latin1-doc.tex \
-  swedish/latin1-doc.tex \
+  swedish/cp1252-doc.tex \
   turkish/tex-doc.tex
   
 DOCSLATIN2= \
+  croatian/latin2-doc.tex \
   czech/latin2-doc.tex \
   hungarian/latin2-doc.tex \
   lower-sorbian/latin2-doc.tex \
@@ -160,9 +168,11 @@ DOCSUTF8LAT= \
   croatian/utf8-doc.tex \
   czech/utf8-doc.tex \
   danish/utf8-doc.tex \
+  dutch/ij-as-ij-utf8-doc.tex \
+  dutch/ij-as-y-utf8-doc.tex \
   english/utf8-doc.tex \
-  dutch/utf8-doc.tex \
   esperanto/utf8-doc.tex \
+  estonian/utf8-doc.tex \
   finnish/utf8-doc.tex \
   french/utf8-doc.tex \
   general/utf8-doc.tex \
@@ -172,6 +182,8 @@ DOCSUTF8LAT= \
   icelandic/utf8-doc.tex \
   italian/utf8-doc.tex \
   kurdish/utf8-doc.tex \
+  latin/utf8-doc.tex \
+  latvian/utf8-doc.tex \
   lithuanian/utf8-doc.tex \
   lower-sorbian/utf8-doc.tex \
   norwegian/utf8-doc.tex \
@@ -266,68 +278,78 @@ newcmp : $(CMPS)
 #	echo '(require "lang/$*.xdy")' >$@
 #	cat test.xdy >>$@
 
-%cp1250.pl : %latin2.pl
-	recode latin2..cp1250 <$< >$@
-	
-%iso88595.pl : %isoir111.pl
-	recode iso-ir-111..iso-8859-5 <$< >$@
-	
-%iso88595.pl : %koi8-r.pl
-	recode koi8-r..iso-8859-5 <$< >$@
-	
-%cp1251.pl : %koi8-r.pl
-	recode koi8-r..cp1251 <$< >$@
-	
-%cp1251.pl : %koi8-u.pl
-	recode koi8-ru..cp1251 <$< >$@
-	
-%cp1251.pl : %isoir111.pl
-	recode iso-ir-111..cp1251 <$< >$@
-	
-%cp1252.pl : %latin9.pl
-	recode latin9..cp1252 <$< >$@
+%utf8.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}/\1/g;' <$< >$@
 
-%utf8.pl : %ascii.pl
-	recode ascii..utf-8 <$< >$@
+%latin1.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=LATIN1 >$@
 
-%utf8.pl : %latin1.pl
-	recode latin1..utf-8 <$< >$@
+romanian/latin2.pl : romanian/utf8.pl
+	sed -e 's/@u{\([^}]*\)}//g;' -f rom-comma-kludge.sed <$< | \
+	iconv --from-code=UTF-8 --to-code=LATIN2 >$@
 
-romanian/utf8.pl : romanian/latin2.pl
-	recode latin2..utf8 <$< | sed -f rom-comma-kludge.sed >$@
+%latin2.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=LATIN2 >$@
+
+%latin3.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=LATIN3 >$@
+
+%latin4.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=LATIN4 >$@
+
+%iso88595.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=ISO-8859-5 >$@
+
+%iso88597.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=ISO-8859-7 >$@
+
+%latin5.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=LATIN5 >$@
+
+%latin9.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=ISO-8859-15 >$@
+
+romanian/cp1250.pl : romanian/utf8.pl
+	sed -e 's/@u{\([^}]*\)}//g;' -f rom-comma-kludge.sed <$< | \
+	iconv --from-code=UTF-8 --to-code=CP1250 >$@
+
+%cp1250.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=CP1250 >$@
+
+%cp1251.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=CP1251 >$@
+
+%cp1252.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=CP1252 >$@
+
+%isoir111.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=ISO-IR-111 >$@
+
+%koi8-r.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=KOI8-R >$@
+
+%koi8-u.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=KOI8-U >$@
 
 romanian/utf8-kl-doc.tex : romanian/utf8-doc.tex
 	sed -f utf8-omega-kludge.sed <$< >$@
 
-%utf8.pl : %latin2.pl
-	recode latin2..utf-8 <$< >$@
-
-%utf8.pl : %latin3.pl
-	recode latin3..utf-8 <$< >$@
-
-%utf8.pl : %latin4.pl
-	recode latin4..utf-8 <$< >$@
-
-%utf8.pl : %latin5.pl
-	iconv --from-code=LATIN5 --to-code=UTF-8 <$< >$@
-
-%utf8.pl : %latin9.pl
-	recode latin9..utf-8 <$< >$@
-
-%utf8.pl : %koi8-r.pl
-	recode koi8-r..utf-8 <$< >$@
-
-%utf8.pl : %koi8-u.pl
-	recode koi8-ru..utf-8 <$< >$@
-	
-%utf8.pl : %isoir111.pl
-	recode iso-ir-111..utf-8 <$< >$@
-
-%utf8.pl : %iso88597.pl
-	recode iso-8859-7..utf-8 <$< >$@
-
-%tex.pl : %utf8.pl utf8-to-tex.sed
-	sed -f utf8-to-tex.sed <$< >$@
+# %tex.pl : %utf8.pl utf8-to-tex.sed
+#	sed -f utf8-to-tex.sed <$< >$@
 
 install : all
 	mkdir -p $(INSTDIR)

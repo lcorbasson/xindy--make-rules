@@ -1,6 +1,6 @@
-# replace [SsTt] with cedilla -> [SsTt] with comma below
+# replace [SsTt] with comma below -> [SsTt] with cedilla
 # for latin2 with romanian language
-s/Ş/Ș/g;
-s/ş/ș/g;
-s/Ţ/Ț/g;
-s/ţ/ț/g;
+s/Ș/Ş/g;
+s/ș/ş/g;
+s/Ț/Ţ/g;
+s/ț/ţ/g;

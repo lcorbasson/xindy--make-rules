@@ -25,9 +25,10 @@ print TESTXDY "	      :rule-set (\"".$prefix."resolve-special\"))\n";
 close TESTXDY;
 system("cat test.xdy >> $ARGV[0]-test.xdy");
 
-$begin =  97 if ($script eq "cyrillic");
-$begin = 150 if ($script eq "latin");
-$begin =  65 if ($script eq "greek");
+$begin = 128;
+# $begin =  97 if ($script eq "cyrillic");
+# $begin = 150 if ($script eq "latin");
+# $begin =  65 if ($script eq "greek");
   
 if (!$begin) {
     $begin = 65;
