@@ -89,3 +89,14 @@ b)
 
 --
 Thomas Henlich (thenlich@web.de)
+
+
+THE MAKEINDEX.SH SCRIPT
+
+The shell script 'makeindex.sh' is meant to provide an interface somewhat similar
+to makeindex, while offering access to the multilingual features. It is
+self-documenting. This may be the way to integrate xindy + make-rules into,
+e.g., LyX.
+
+Martin Vermeer <martin.vermeer@hut.fi>
+
