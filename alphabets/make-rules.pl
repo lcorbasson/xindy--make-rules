@@ -115,7 +115,7 @@ foreach $character (@special) {
   $tokens{$character} = "" unless ($character eq "letters");
 }
 
-print_tokens($prefix . "ignore-special") if ($tokens);
+print_tokens($prefix . "ignore-special") if (%tokens);
 
 $offset = 161;
 $f = 1;
@@ -131,7 +131,7 @@ for ($l = 0; $l < @special; $l++) {
   }
 }
 
-print_tokens($prefix . "resolve-special") if ($tokens);
+print_tokens($prefix . "resolve-special") if (%tokens);
 
 $ref = \$lett;
 make_tokens();
