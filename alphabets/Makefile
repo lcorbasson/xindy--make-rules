@@ -1,3 +1,4 @@
+# $Id$
 
 ifdef MODDIR
 INSTDIR=${MODDIR}/lang
@@ -95,6 +96,7 @@ DOCSLATIN1= \
   albanian/latin1-doc.tex \
   danish/latin1-doc.tex \
   english/ascii-doc.tex \
+  esperanto/tex-doc.tex \
   finnish/cp1252-doc.tex \
   french/cp1252-doc.tex \
   general/latin1-doc.tex \
@@ -106,7 +108,8 @@ DOCSLATIN1= \
   russian/translit-tex-doc.tex \
   russian/translit-tgl-tex-doc.tex \
   spanish/modern-latin1-doc.tex spanish/traditional-latin1-doc.tex \
-  swedish/latin1-doc.tex
+  swedish/latin1-doc.tex \
+  turkish/tex-doc.tex \
 
 DOCSLATIN2= \
   croatian/latin2-doc.tex \
@@ -133,7 +136,7 @@ DOCSCYR= \
 DOCSOTHER= \
   greek/iso88597-doc.tex
 
-DOCS= $(DOCSLATIN1) $(DOCSLATIN2) $(DOCSLATIN3) $(DOCSLATIN6) \
+DOCS= $(DOCSLATIN1) $(DOCSLATIN2) $(DOCSLATIN6) \
   $(DOCSCYR) $(DOCSOTHER)
 
 alphabets-inc.tex : $(DOCS)

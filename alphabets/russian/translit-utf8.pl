@@ -64,7 +64,7 @@ $alphabet = [
                    [], # rr (albanian)
                    [], # r with caron (czech, slovak/large)
                    [], # r with acute (lower sorbian)
-['S',    ['s','S'],['đ','Đ']],
+['S',    ['s','S'],['š','Š']],
                    [], # sh (albanian)
                    [], # sz (hungarian)
                    [], # s with caron (many)
@@ -83,7 +83,7 @@ $alphabet = [
                    [], # x (many)
                    [], # xh (albanian)
 ['Y',    ['y','Y']],
-['Z',    ['z','Z'],['ū','Ū']],
+['Z',    ['z','Z'],['ž','Ž']],
                    [], # zh (albanian)
                    [], # zs (hungarian)
                    [], # z with caron (many)
