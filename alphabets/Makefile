@@ -208,6 +208,9 @@ newcmp : $(CMPS)
 %utf8.pl : %latin1.pl
 	recode latin1..utf-8 <$< >$@
 
+romanian/utf8.pl : romanian/latin2.pl
+	recode latin2..utf8 <$< | sed -f rom-comma-kludge.sed >$@
+
 %utf8.pl : %latin2.pl
 	recode latin2..utf-8 <$< >$@
 
