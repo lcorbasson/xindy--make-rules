@@ -21,6 +21,7 @@ XDYSLATIN1= \
   spanish/modern-latin1.xdy spanish/traditional-latin1.xdy \
   swedish/latin1.xdy \
   general/latin1.xdy
+  dutch/latin1.xdy \
 
 XDYSLATIN2= \
   croatian/latin2.xdy croatian/cp1250.xdy \
@@ -82,6 +83,7 @@ XDYSUTF8= \
   swedish/utf8.xdy \
   turkish/utf8.xdy \
   ukrainian/utf8.xdy
+  dutch/utf8.xdy \
 
 XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSLATIN5) \
   $(XDYSCYR) $(XDYSOTHER)
@@ -111,6 +113,7 @@ DOCSLATIN1= \
   spanish/modern-latin1-doc.tex spanish/traditional-latin1-doc.tex \
   swedish/latin1-doc.tex \
   turkish/tex-doc.tex \
+  dutch/latin1-doc.tex \
 
 DOCSLATIN2= \
   croatian/latin2-doc.tex \

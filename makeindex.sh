@@ -179,7 +179,7 @@ do
         PRE="sl"
         ;;
         "turkish")
-        ENC_="latin3"
+        ENC_="latin5"
         PRE="tr"
         ;;
      esac
