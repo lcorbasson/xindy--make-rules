@@ -1,0 +1,18 @@
+
+;; extra encoding stuff, not auto-generated
+(require "lang/finnish/tex-latin9.xdy")
+
+;; read inputenc rules
+(require "tex/inputenc/latin1.xdy")
+
+;; read language-specific (and encoding-specific) rule-sets
+(require "lang/finnish/latin9.xdy")
+
+;; That's all ;-)
+
+
+;; End
+
+;; Local Variables:
+;; mode: lisp
+;; End:
