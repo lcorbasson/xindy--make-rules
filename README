@@ -9,6 +9,9 @@ are also provided.
 2. A Perl script to generate sets of rules which are needed in combination
 with the LaTeX `inputenc' package.
 
+3. A shell script makeindex.sh to be used as a rough-and-ready drop-in 
+replacement for makeindex, however with easy localization. This was made 
+to work together with LyX.
 
 INSTALLATION INSTRUCTIONS
 
@@ -93,10 +96,16 @@ Thomas Henlich (thenlich@web.de)
 
 THE MAKEINDEX.SH SCRIPT
 
-The shell script 'makeindex.sh' is meant to provide an interface somewhat similar
-to makeindex, while offering access to the multilingual features. It is
-self-documenting. This may be the way to integrate xindy + make-rules into,
-e.g., LyX.
+The shell script 'makeindex.sh' is meant to provide an interface somewhat 
+similar to makeindex, while offering access to the multilingual features. 
+It is self-documenting. 
 
+In LyX, you should specify as the makeindex command string:
+
+	makeindex.sh -m $$lang
+
+LyX will substitute the language specified for babel.
+
+--
 Martin Vermeer <martin.vermeer@hut.fi>
 

@@ -21,7 +21,7 @@ XDYSLATIN1= \
   norwegian/latin1.xdy \
   portuguese/latin1.xdy \
   spanish/modern-latin1.xdy spanish/traditional-latin1.xdy \
-  swedish/latin9.xdy swedish/cp1252.xdy \
+  swedish/latin1.xdy swedish/latin9.xdy swedish/cp1252.xdy \
   general/latin9.xdy general/cp1252.xdy
 
 XDYSLATIN2= \
