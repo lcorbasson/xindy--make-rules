@@ -11,7 +11,10 @@ print <<"EOF";
 .
 EOF
 
-for ($i = 128; $i < 256; $i++) {
+$start = 128;
+$start = 160 if (@ARGV[1] =~ /^latin/);
+
+for ($i = $start; $i < 256; $i++) {
   printf("\\index{%c--%2x}\n", $i, $i);
 }
 
