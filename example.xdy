@@ -4,7 +4,11 @@
 (require "tex/inputenc/latin1.xdy")
 
 ;; read language-specific (and encoding-specific) rule-sets
+(require "lang/init-rules.xdy")
 (require "lang/spanish/traditional-latin1.xdy")
+
+;; add more languages when required:
+;(require "lang/swedish/latin9.xdy")
 
 ;; apply rules left-to-right or right-to-left?
 ;;                              run 0   run 1    run 2   run 3
@@ -12,13 +16,13 @@
 
 ;; define order of sorting runs
 (use-rule-set :run 0
-	      :rule-set ("es-alphabetize" "es-ignore-special"))
+	      :rule-set ("alphabetize" "ignore-special"))
 (use-rule-set :run 1
-	      :rule-set ("es-resolve-diacritics" "es-ignore-special"))
+	      :rule-set ("resolve-diacritics" "ignore-special"))
 (use-rule-set :run 2
-	      :rule-set ("es-resolve-case" "es-ignore-special"))
+	      :rule-set ("resolve-case" "ignore-special"))
 (use-rule-set :run 3
-	      :rule-set ("es-resolve-special" "es-resolve-letters"))
+	      :rule-set ("resolve-special" "resolve-letters"))
 
 ;; define other stuff
 (define-attributes ("default"))

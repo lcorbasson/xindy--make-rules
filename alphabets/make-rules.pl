@@ -11,6 +11,7 @@ print XDY ";; language: $language\n\n";
 if ($prefix) {
     $prefix = $prefix . '-';
 }
+$prefix = "";
 
 print TESTXDY "(require \"lang/$ARGV[0].xdy\")\n";
 print TESTXDY "(define-sort-rule-orientations (forward backward forward forward))\n";
@@ -135,10 +136,11 @@ print_tokens($prefix . "resolve-special");
 $ref = \$lett;
 make_tokens();
 process_ligatures();
-print XDY "(define-rule-set \"".$prefix."position\"\n\n  :rules  (\n"
-         ."           (\"";
+print XDY "(define-rule-set \"".$prefix."position\"\n\n";
+print XDY "  :inherit-from (\"position\")\n";
+print XDY "  :rules ((\"";
 print_tokens2("+\$\" \"\"  ");
-print XDY "           (\"";
+print XDY "          (\"";
 print_tokens2("\"   \"~e\"");
 print XDY "))\n\n";
 
@@ -260,7 +262,8 @@ sub process_ligatures {
 }
 
 sub print_tokens {
-  print XDY "(define-rule-set \"$_[0]\"\n\n  :rules  (";
+  print XDY "(define-rule-set \"$_[0]\"\n\n  :inherit-from (\"$_[0]\")\n";
+  print XDY "  :rules (";
   foreach $letter (sort {
     (length($b) <=> length($a)) || ($tokens{$a} cmp $tokens{$b})
   } (keys %tokens)) {
@@ -270,7 +273,7 @@ sub print_tokens {
     $tout = $tokens{$letter};
     $tout =~ s/\~/~~/g;
     $tout =~ s/\"/~\"/g;
-    print XDY "(\"$lout\" \"$tout\" :string)\n           ";
+    print XDY "(\"$lout\" \"$tout\" :string)\n          ";
   }
   print XDY "))\n\n";
   %tokens = ();

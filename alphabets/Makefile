@@ -390,6 +390,7 @@ install : all
 		test -d $(INSTDIR)/$$dir  ||  mkdir $(INSTDIR)/$$dir ; \
 		cp $$file $(INSTDIR)/$$dir ; \
 	   done
+	cp init-rules.xdy $(INSTDIR)
 
 clean :
 	$(RM) $(XDYS) $(XDYSUTF8) *~ */*~ *.aux *.dvi *.toc *.log *.ps \

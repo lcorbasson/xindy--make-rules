@@ -1,0 +1,19 @@
+;; $Id$
+;; -*- lisp -*-
+
+(define-rule-set "alphabetize" :rules ())
+
+(define-rule-set "resolve-diacritics" :rules ())
+
+(define-rule-set "resolve-case" :rules ())
+
+(define-rule-set "ignore-special" :rules ())
+
+(define-rule-set "resolve-special" :rules ())
+
+(define-rule-set "position" :rules ())
+
+(define-rule-set "resolve-letters" :rules ())
+
+(define-rule-set "ignore-the-rest"
+  :rules (("[~b-~e]" "" :bregexp)))

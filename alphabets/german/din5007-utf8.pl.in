@@ -134,8 +134,8 @@ $alphabet = [
                    [], # a with ring above (icelandic)
 ];
 
-$sortcase = 'Aa';
-#$sortcase = 'aA';
+#$sortcase = 'Aa';
+$sortcase = 'aA';
 
 $ligatures = [
 [['ß'], 'after', [['s','s']]],
