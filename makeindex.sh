@@ -182,6 +182,10 @@ do
         ENC_="latin5"
         PRE="tr"
         ;;
+        "dutch")
+        ENC_="latin1"
+        PRE="nl"
+        ;;
      esac
       IGNORESPECIAL="$IGNORESPECIAL \"$PRE-ignore-special\"" 
       ALPHABETIZE="$ALPHABETIZE \"$PRE-alphabetize\"" 

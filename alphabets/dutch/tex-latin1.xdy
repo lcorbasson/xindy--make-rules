@@ -1,18 +1,8 @@
 
 (require "tex/inputenc/latin1.xdy")
 
-(merge-rule "~"y"  "ÿ" :string)
-(merge-rule "~"Y"  "Ý" :string)
-(merge-rule "\~"o" "ö" :string)
-(merge-rule "\~"O" "Ö" :string)
-(merge-rule "\~"e" "ë" :string)
-(merge-rule "\~"E" "Ë" :string)
-(merge-rule "\'e"  "é" :string)
-(merge-rule "\'E"  "É" :string)
-
-;; To handle \citeindextrue index entries within {}
-;; (make it better if you can!)
-
-(merge-rule "{" "" :string)
-
+(merge-rule "~"Y"  "IJ" :string)
+(merge-rule "~"y"  "ij" :string)
+(merge-rule "\IJ"  "IJ" :string)
+(merge-rule "\ij"  "ij" :string)
 
