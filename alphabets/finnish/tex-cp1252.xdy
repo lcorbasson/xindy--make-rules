@@ -11,14 +11,6 @@
 (merge-rule "\aa"  "å" :string)
 (merge-rule "\AA"  "Å" :string)
 
-(merge-rule "\'E"  "É" :string)
-(merge-rule "\'e"  "é" :string)
-
 (merge-rule "\ss" "ß" :string)
-
-;; To handle \citeindextrue index entries within {} 
-;; (make it better if you can!)
-
-(merge-rule "{" "" :string)
 
 ;; End

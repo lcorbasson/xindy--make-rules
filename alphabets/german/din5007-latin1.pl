@@ -112,6 +112,6 @@ $ligatures = [
 [['ü','Ü'], 'after', [['u','e'], ['U','e']]]
 ];
 
-@special = ('?', '!', '.', 'letters', '-', '\'');
+@special = ('?', '!', '.', 'letters', '-', '\'', '{', '}');
 
 do 'make-rules.pl';

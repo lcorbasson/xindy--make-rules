@@ -11,8 +11,3 @@
 (merge-rule "~"u" "ü" :string)
 (merge-rule "~"s" "ß" :string)
 
-;; To handle \citeindextrue index entries within {}
-;; (make it better if you can!)
-
-(merge-rule "{" "" :string)
-

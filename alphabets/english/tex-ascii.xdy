@@ -8,9 +8,4 @@
 
 (require "tex/inputenc/latin1.xdy")
 
-;; To handle \citeindextrue index entries within {} 
-;; (make it better if you can!)
-
-(merge-rule "{" "" :string)
-
 ;; End

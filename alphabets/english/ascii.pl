@@ -107,6 +107,6 @@ $sortcase = 'Aa';
 $ligatures = [
 ];
 
-@special = ('?', '!', '.', 'letters', '-', '\'');
+@special = ('?', '!', '.', 'letters', '-', '\'', '{', '}');
 
 do 'make-rules.pl';
