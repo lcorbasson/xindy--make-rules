@@ -82,6 +82,7 @@ XDYSUTF8= \
   german/din5007-utf8.xdy german/duden-utf8.xdy german/braille-utf8.xdy \
   greek/translit-utf8.xdy \
   greek/utf8.xdy \
+  greek/polytonic-utf8.xdy \
   gypsy/northrussian-utf8.xdy \
   hausa/utf8.xdy \
   hebrew/utf8.xdy \
@@ -227,6 +228,7 @@ DOCSUTF8CYR= \
 
 DOCSUTF8OTHER= \
   greek/utf8-doc.tex \
+  greek/polytonic-utf8-doc.tex \
   hebrew/utf8-doc.tex \
   klingon/tex-doc.tex
 #  georgian/tex-doc.tex \
