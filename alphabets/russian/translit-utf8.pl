@@ -100,7 +100,7 @@ $alphabet = [
 $ligatures = [
 ];
 
-@special = ('?', '!', '.', 'letters', 'xx', 'x', '-');
+@special = ('?', '!', '.', 'letters', '″', '′', '-');
 
 $sortcase = "Aa";
 #$sortcase = "aA";

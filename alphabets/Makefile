@@ -229,7 +229,7 @@ newcmp : $(CMPS)
 %utf8.pl : %iso88597.pl
 	recode iso-8859-7..utf-8 <$< >$@
 
-%tex.pl : %utf8.pl
+%tex.pl : %utf8.pl utf8-to-tex.sed
 	sed -f utf8-to-tex.sed <$< >$@
 
 install : all
