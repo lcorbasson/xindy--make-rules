@@ -59,7 +59,8 @@ XDYSCYR= \
   ukrainian/koi8-u.xdy ukrainian/cp1251.xdy
 
 XDYSOTHER= \
-  greek/iso88597.xdy
+  greek/iso88597.xdy \
+  hebrew/iso88598.xdy
 
 XDYSUTF8= \
   albanian/utf8.xdy \
@@ -82,6 +83,7 @@ XDYSUTF8= \
   greek/utf8.xdy \
   gypsy/northrussian-utf8.xdy \
   hausa/utf8.xdy \
+  hebrew/utf8.xdy \
   hungarian/utf8.xdy \
   icelandic/utf8.xdy \
   italian/utf8.xdy \
@@ -224,6 +226,7 @@ DOCSUTF8CYR= \
 
 DOCSUTF8OTHER= \
   greek/utf8-doc.tex \
+  hebrew/utf8-doc.tex \
   klingon/tex-doc.tex
 #  georgian/tex-doc.tex \
 #  german/braille-utf8-doc.tex \
@@ -326,6 +329,10 @@ romanian/latin2.pl : romanian/utf8.pl
 %iso88597.pl : %utf8.pl.in
 	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
 	iconv --from-code=UTF-8 --to-code=ISO-8859-7 >$@
+
+%iso88598.pl : %utf8.pl.in
+	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=ISO-8859-8 >$@
 
 %latin5.pl : %utf8.pl.in
 	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
