@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 $language = "Macedonian";
+$prefix = "mk";
 
 $alphabet = [
 ['á',  ['Á','á']],

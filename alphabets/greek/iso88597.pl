@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 $language = "Greek";
+$prefix = "el";
 
 $alphabet = [
 ['Á',    ['á', 'Á'],   ['Ü','¶']],

@@ -32,12 +32,36 @@ XDYSCYR= \
 XDYSOTHER= \
   greek/iso88597.xdy
 
+XDYSUTF8= \
+  danish/utf8.xdy \
+  english/utf8.xdy \
+  finnish/utf8.xdy \
+  french/utf8.xdy \
+  german/din5007-utf8.xdy german/duden-utf8.xdy \
+  norwegian/utf8.xdy \
+  spanish/modern-utf8.xdy spanish/traditional-utf8.xdy \
+  swedish/utf8.xdy \
+  general/utf8.xdy \
+  croatian/utf8.xdy \
+  czech/utf8.xdy \
+  polish/utf8.xdy \
+  slovak/small-utf8.xdy slovak/large-utf8.xdy \
+  esperanto/utf8.xdy \
+  belarusian/utf8.xdy \
+  bulgarian/utf8.xdy \
+  macedonian/utf8.xdy \
+  russian/utf8.xdy \
+  serbian/utf8.xdy \
+  ukrainian/utf8.xdy \
+  greek/utf8.xdy
+
 XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSCYR) $(XDYSOTHER)
 
 INDS=$(XDYS:.xdy=.ind)
 CMPS=$(XDYS:.xdy=.ind.cmp)
 
 all : $(XDYS)
+utf8 : $(XDYSUTF8)
 
 DOCSLATIN1= \
   danish/latin1-doc.tex \
@@ -134,6 +158,9 @@ newcmp : $(CMPS)
 %cp1252.pl : %latin9.pl
 	recode latin9..cp1252 <$< >$@
 
+%utf8.pl : %ascii.pl
+	recode ascii..utf-8 <$< >$@
+
 %utf8.pl : %latin1.pl
 	recode latin1..utf-8 <$< >$@
 
@@ -143,15 +170,27 @@ newcmp : $(CMPS)
 %utf8.pl : %latin3.pl
 	recode latin3..utf-8 <$< >$@
 
+%utf8.pl : %latin9.pl
+	recode latin9..utf-8 <$< >$@
+
 %utf8.pl : %koi8-r.pl
 	recode koi8-r..utf-8 <$< >$@
+
+%utf8.pl : %koi8-u.pl
+	recode koi8-ru..utf-8 <$< >$@
+	
+%utf8.pl : %isoir111.pl
+	recode iso-ir-111..utf-8 <$< >$@
+
+%utf8.pl : %iso88597.pl
+	recode iso-8859-7..utf-8 <$< >$@
 
 install : all
 	mkdir -p $(INSTDIR)
 	cp -P */*.xdy $(INSTDIR)
 
 clean :
-	$(RM) $(XDYS) *~ */*~ *.aux *.dvi *.toc *.log *.ps \
+	$(RM) $(XDYS) $(XDYSUTF8) *~ */*~ *.aux *.dvi *.toc *.log *.ps \
 	  alphabets-inc.tex */*-doc.tex */*.raw */*.xlg */*.ind \
 	  */*cp1250.pl */*cp1251.pl */*cp1252.pl */*iso88595.pl \
 	  */*utf8.pl */*-test.xdy

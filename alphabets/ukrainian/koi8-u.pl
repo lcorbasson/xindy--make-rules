@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 $language = "Ukrainian";
+$prefix = "uk";
 
 $alphabet = [
 ['á',  ['Á','á']],
