@@ -17,21 +17,29 @@ if [ "$1" = "" ] ; then
   echo ""
   echo "Languages <lang>:"
   echo "  albanian"
-  echo "  belarusian  finnish         swedish"
-  echo "  bulgarian   french          hungarian"
-  echo "  icelandic   lower-sorbian   norwegian"
-  echo "  croatian    general         polish"
-  echo "  portuguese  romanian        slovenian"
-  echo "  czech       german          russian"
-  echo "  danish      greek           serbian"
-  echo "  english     slovak          ukrainian"
-  echo "  esperanto   macedonian      spanish"
-  echo "  turkish"
+  echo "  belarusian    finnish        swedish"
+  echo "  bulgarian     french         hungarian"
+  echo "  icelandic     norwegian      latin"
+  echo "  croatian      general        polish"
+  echo "  portuguese    romanian       slovenian"
+  echo "  czech         german         russian"
+  echo "  danish        greek          serbian"
+  echo "  english       slovak         ukrainian"
+  echo "  esperanto     macedonian     spanish"
+  echo "  turkish       kurdish        georgian"
+  echo "  estonian      latvian        lithuanian"
+  echo "  gypsy         hausa          hebrew"
+  echo "  gypsy         hausa          hebrew"
+  echo "  upper-sorbian lower-sorbian  klingon"
+  echo "  mongolian     vietnamese"
   echo ""
   echo "Variants <var>:"
-  echo "  german:  duden, din5007"
-  echo "  spanish: traditional, modern"
-  echo "  slovak:  large, small"
+  echo "  german:    duden, din5007"
+  echo "  spanish:   traditional, modern"
+  echo "  slovak:    large, small"
+  echo "  gypsy:     northrussian"
+  echo "  kurdish:   turkish-i, bedirxan"
+  echo "  mongolian: cyrillic"
   echo ""
   echo "Docprocessors <dp>:"
   echo "  -t :    -d tex"
@@ -162,9 +170,9 @@ do
         ENC_="latin2"
         PRE="s1"
         ;;
-        "lower-sorbian")
+        "upper-sorbian")
         ENC_="latin2"
-        PRE="s1"
+        PRE="s2"
         ;;
         "portuguese")
         ENC_="latin1"
@@ -186,6 +194,61 @@ do
         ENC_="latin1"
         PRE="nl"
         ;;
+        "estonian")
+        ENC_="latin1"
+        PRE="et"
+        ;;
+        "georgian")
+        ENC_="georgian"
+        PRE="ka"
+        ;;
+        "gypsy")
+        ENC_="utf8"
+        PRE="g1"
+		VAR="northrussian-"
+        ;;
+        "hausa")
+        ENC_="utf8"
+        PRE="ha"
+		;;
+        "hebrew")
+        ENC_="iso88598"
+        PRE="iw"
+		;;
+        "italian")
+        ENC_="latin1"
+        PRE="it"
+		;;
+        "klingon")
+        ENC_="utf8"
+        PRE="kl"
+		;;
+        "kurdish")
+        ENC_="latin5"
+        PRE="kl"
+		VAR="turkish-i-"
+		;;
+        "latin")
+        ENC_="utf8"
+        PRE="la"
+		;;
+        "latvian")
+        ENC_="latin4"
+        PRE="lv"
+		;;
+        "lithuanian")
+        ENC_="latin4"
+        PRE="lt"
+		;;
+        "mongolian")
+        ENC_="utf8"
+        PRE="mn"
+		VAR="cyrillic-"
+		;;
+        "vietnamese")
+        ENC_="utf8"
+        PRE="vi"
+		;;
      esac
       IGNORESPECIAL="$IGNORESPECIAL \"$PRE-ignore-special\"" 
       ALPHABETIZE="$ALPHABETIZE \"$PRE-alphabetize\"" 
