@@ -1,0 +1,33 @@
+
+;; extra encoding stuff, not auto-generated
+(require "lang/finnish/tex-latin9.xdy")
+
+;; read inputenc rules
+(require "tex/inputenc/latin1.xdy")
+
+;; read language-specific (and encoding-specific) rule-sets
+(require "lang/finnish/latin9.xdy")
+
+;; apply rules left-to-right or right-to-left?
+;;                              run 0   run 1    run 2   run 3
+(define-sort-rule-orientations (forward backward forward forward))
+
+;; define order of sorting runs
+(use-rule-set :run 0
+              :rule-set ("fi-alphabetize" "fi-ignore-special"))
+(use-rule-set :run 1
+              :rule-set ("fi-resolve-diacritics" "fi-ignore-special"))
+(use-rule-set :run 2
+              :rule-set ("fi-resolve-case" "fi-ignore-special"))
+(use-rule-set :run 3
+              :rule-set ("fi-resolve-special"))
+
+
+;; That's all ;-)
+
+
+;; End
+
+;; Local Variables:
+;; mode: lisp
+;; End:
