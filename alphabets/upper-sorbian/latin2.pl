@@ -1,32 +1,31 @@
 #!/usr/bin/perl
 
-$language = "Russian";
-$variant = "ISO 9 transliteration, for western languages";
-$prefix = "ru";
+$language = "Upper Sorbian";
+$prefix = "s2";
 $script = "latin";
 
 $alphabet = [
-['A',    ['a','A'],['√¢','√Ç']],
+['A',    ['a','A']],
                    [], # a with breve (romanian)
                    [], # a with circumflex (romanian)
                    [], # a with ogonek (polish)
 ['B',    ['b','B']],
-['C',    ['c','C'],['ƒç','ƒå']],
-                   [], # ch (spanish/traditional)
+['C',    ['c','C']],
+                   [], # ch (many)
                    [], # cs (hungarian)
-                   [], # c with caron (many)
+['»',    ['Ë','»']],
                    [], # c with acute (croatian, lower sorbian, polish)
                    [], # c with circumflex (esperanto)
                    [], # c with cedilla (albanian, kurdish, turkish)
 ['D',    ['d','D']],
                    [], # dh (albanian)
                    [], # d+z with caron (croatian)
-                   [], # d+z with acute (upper sorbian)
+['Dº',   ['dº','Dº','D¨']],
                    [], # d with caron (slovak/large)
                    [], # d with stroke (croatian)
                    [], # eth (icelandic)
-['E',    ['e','E'],['√®','√à'],['√´','√ã']],
-                   [], # e with caron (lower/upper sorbian)
+['E',    ['e','E']],
+['Ã',    ['Ï','Ã']],
                    [], # e with circumflex (kurdish)
                    [], # e with diaeresis (albanian)
                    [], # e with ogonek (polish)
@@ -37,14 +36,14 @@ $alphabet = [
                    [], # g with breve (turkish)
 ['H',    ['h','H']],
                    [], # h with circumflex (esperanto)
-                   [], # ch (many)
+['Ch',   ['ch','Ch','CH']],
                    [], # dotless i (turkish)
 ['I',    ['i','I']],
                    [], # i with circumflex (kurdish, romanian)
 ['J',    ['j','J']],
                    [], # j with circumflex (esperanto)
 ['K',    ['k','K']],
-                   [], # l with stroke (lower/upper sorbian)
+['£',    ['≥','£']],
 ['L',    ['l','L']],
                    [], # lj (croatian)
                    [], # ll (albanian, spanish/traditional)
@@ -55,21 +54,21 @@ $alphabet = [
                    [], # nj (albanian, croatian)
                    [], # ny (hungarian)
                    [], # n with caron (slovak/large)
-                   [], # n with acute (lower/upper sorbian, polish)
+['—',    ['Ò','—']],
                    [], # n with tilde (spanish/modern, spanish/traditional)
 ['O',    ['o','O']],
-                   [], # o with acute (polish, upper sorbian)
+['”',    ['Û','”']],
                    [], # o with diaeresis (hungarian, turkish)
 ['P',    ['p','P']],
-                   [], # q (many)
+['Q',    ['q','Q']],
 ['R',    ['r','R']],
                    [], # rr (albanian)
-                   [], # r with caron (czech, slovak/large, upper sorbian)
+['ÿ',    ['¯','ÿ']],
                    [], # r with acute (lower sorbian)
-['S',    ['s','S'],['≈°','≈†'],['≈ù','≈ú']],
+['S',    ['s','S']],
                    [], # sh (albanian)
                    [], # sz (hungarian)
-                   [], # s with caron (many)
+['©',    ['π','©']],
                    [], # s with acute (lower sorbian, polish)
                    [], # s with circumflex (esperanto)
                    [], # s with comma below (romanian)
@@ -78,20 +77,20 @@ $alphabet = [
                    [], # th (albanian)
                    [], # t with caron (slovak/large)
                    [], # t with comma below (romanian)
-                   [], # c with acute (upper sorbian)
-['U',    ['u','U'],['√ª','√õ']],
+['∆',    ['Ê','∆']],
+['U',    ['u','U']],
                    [], # u with breve (esperanto)
                    [], # u with circumflex (kurdish)
                    [], # u with diaeresis (hungarian, turkish)
 ['V',    ['v','V']],
-                   [], # w (many)
-                   [], # x (many)
+['W',    ['w','W']],
+['X',    ['x','X']],
                    [], # xh (albanian)
 ['Y',    ['y','Y']],
-['Z',    ['z','Z'],['≈æ','≈Ω']],
+['Z',    ['z','Z']],
                    [], # zh (albanian)
                    [], # zs (hungarian)
-                   [], # z with caron (many)
+['Æ',    ['æ','Æ']],
                    [], # z with acute (lower sorbian, polish)
                    [], # z with dot above (polish)
                    [], # thorn (icelandic)
@@ -103,9 +102,10 @@ $alphabet = [
 ];
 
 $ligatures = [
+[['ﬂ'], 'after', [['s','s']]],
 ];
 
-@special = ('?', '!', '.', 'letters', '‚Ä≥', '‚Ä≤', '-');
+@special = ('?', '!', '.', 'letters', '-', '\'');
 
 $sortcase = "Aa";
 #$sortcase = "aA";

@@ -87,3 +87,19 @@ s/Ǌ/NJ/g;
 s/ǳ/dz/g;
 s/ǲ/Dz/g;
 s/Ǳ/DZ/g;
+# kurdish:
+s/ê/\\^e/g;
+s/Ê/\\^E/g;
+# lithuanian:
+s/ą/\\k a/g;
+s/Ą/\\k A/g;
+s/ę/\\k e/g;
+s/Ę/\\k E/g;
+s/ė/\\.e/g;
+s/Ė/\\.E/g;
+s/į/\\k i/g;
+s/Į/\\k I/g;
+s/ų/\\k u/g;
+s/Ų/\\k U/g;
+s/ū/\\=u/g;
+s/Ū/\\=U/g;

@@ -26,11 +26,11 @@ close TESTXDY;
 system("cat test.xdy >> $ARGV[0]-test.xdy");
 
 $begin =  97 if ($script eq "cyrillic");
-$begin = 160 if ($script eq "latin");
+$begin = 150 if ($script eq "latin");
 $begin =  65 if ($script eq "greek");
   
 if (!$begin) {
-    $begin = 160;
+    $begin = 150;
 }
 
 print "Alphabet has " . @{$alphabet} . " elements.\n";
@@ -138,7 +138,7 @@ print_tokens($prefix . "resolve-special");
         push @l,join("\\,", (@{$alphabet->[$i][$j]}));
     }
     if ((@l)) {  
-	push @m, join(" -- ", (@l));
+	push @m, join(" & ", (@l));
     }
 #    push @m, "`".$alphabet->[$i][0]."':\\>".join(" -- ", (@l));
     @l = ();
@@ -148,9 +148,9 @@ print_tokens($prefix . "resolve-special");
   print DOC "}\n\n";
   print DOC "\\subsubsection{Alphabet}\n";
   print DOC "\\icod\\fcod\n";
-  print DOC "\\begin{flushleft}\n";
+  print DOC "\\begin{alphabet}\n";
   print DOC join("\\\\\n", (@m));
-  print DOC "\n\\end{flushleft}\n";
+  print DOC "\n\\end{alphabet}\n";
   print DOC "\\idef\\fdef\n";
 
 # ligatures

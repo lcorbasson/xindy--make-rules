@@ -15,6 +15,7 @@ XDYSLATIN1= \
   german/din5007-latin1.xdy german/duden-latin1.xdy \
   greek/translit-tex.xdy \
   icelandic/latin1.xdy \
+  italian/latin1.xdy \
   norwegian/latin1.xdy \
   portuguese/latin1.xdy \
   russian/translit-iso-tex.xdy \
@@ -32,12 +33,17 @@ XDYSLATIN2= \
   romanian/latin2.xdy \
   slovenian/latin2.xdy slovenian/cp1250.xdy \
   slovak/small-latin2.xdy slovak/small-cp1250.xdy \
-  slovak/large-latin2.xdy slovak/large-cp1250.xdy
+  slovak/large-latin2.xdy slovak/large-cp1250.xdy \
+  upper-sorbian/latin2.xdy upper-sorbian/cp1250.xdy
 
 XDYSLATIN3= \
   esperanto/latin3.xdy \
 
+XDYSLATIN4= \
+  lithuanian/latin4.xdy \
+
 XDYSLATIN5= \
+  kurdish/latin5.xdy \
   turkish/latin5.xdy
 
 XDYSCYR= \
@@ -68,6 +74,9 @@ XDYSUTF8= \
   greek/utf8.xdy \
   hungarian/utf8.xdy \
   icelandic/utf8.xdy \
+  italian/utf8.xdy \
+  kurdish/utf8.xdy \
+  lithuanian/utf8.xdy \
   lower-sorbian/utf8.xdy \
   macedonian/utf8.xdy \
   norwegian/utf8.xdy \
@@ -82,9 +91,10 @@ XDYSUTF8= \
   spanish/modern-utf8.xdy spanish/traditional-utf8.xdy \
   swedish/utf8.xdy \
   turkish/utf8.xdy \
+  upper-sorbian/utf8.xdy \
   ukrainian/utf8.xdy
 
-XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSLATIN5) \
+XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSLATIN4) $(XDYSLATIN5) \
   $(XDYSCYR) $(XDYSOTHER)
 
 INDS=$(XDYS:.xdy=.ind)
@@ -107,6 +117,9 @@ DOCSLATIN1= \
   german/din5007-tex-doc.tex german/duden-tex-doc.tex \
   greek/translit-tex-doc.tex \
   icelandic/latin1-doc.tex \
+  italian/latin1-doc.tex \
+  kurdish/tex-doc.tex \
+  lithuanian/tex-doc.tex \
   norwegian/latin1-doc.tex \
   portuguese/latin1-doc.tex \
   romanian/tex-doc.tex \
@@ -120,9 +133,9 @@ DOCSLATIN2= \
   hungarian/latin2-doc.tex \
   lower-sorbian/latin2-doc.tex \
   polish/latin2-doc.tex \
-#  romanian/latin2-doc.tex \
   slovak/small-latin2-doc.tex slovak/large-latin2-doc.tex \
-  slovenian/latin2-doc.tex
+  slovenian/latin2-doc.tex \
+  upper-sorbian/latin2-doc.tex
 
 DOCSLATIN3=
 
@@ -131,7 +144,7 @@ DOCSCYR= \
   bulgarian/cp1251-doc.tex \
   macedonian/cp1251-doc.tex \
   russian/cp1251-doc.tex \
-  serbian/cp1251-doc.tex\
+  serbian/cp1251-doc.tex \
   ukrainian/cp1251-doc.tex
 
 DOCSOTHER= \
@@ -223,8 +236,11 @@ romanian/utf8.pl : romanian/latin2.pl
 %utf8.pl : %latin3.pl
 	recode latin3..utf-8 <$< >$@
 
+%utf8.pl : %latin4.pl
+	recode latin4..utf-8 <$< >$@
+
 %utf8.pl : %latin5.pl
-	recode latin5..utf-8 <$< >$@
+	iconv --from-code=LATIN5 --to-code=UTF-8 <$< >$@
 
 %utf8.pl : %latin9.pl
 	recode latin9..utf-8 <$< >$@
