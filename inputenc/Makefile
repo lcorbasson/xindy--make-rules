@@ -1,4 +1,10 @@
+
+ifdef MODDIR
+INSTDIR=${MODDIR}/tex/inputenc
+else
 INSTDIR=/usr/local/lib/xindy/modules/tex/inputenc
+endif
+
 
 XDYS=latin1.xdy latin2.xdy latin3.xdy cp1250.xdy cp1252.xdy \
 cp437.xdy cp850.xdy \

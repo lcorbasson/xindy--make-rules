@@ -1,4 +1,9 @@
+
+ifdef MODDIR
+INSTDIR=${MODDIR}/lang
+else
 INSTDIR=/usr/local/lib/xindy/modules/lang
+endif
 
 XDYSLATIN1= \
   danish/latin1.xdy \
