@@ -276,30 +276,36 @@ sub print_tokens {
   %tokens = ();
 }
 
+sub close_range {
+    if (ord($_[0])-ord($range_beg) > 0) {
+	if (ord($_[0])-ord($range_beg) > 1) {
+	    $rule .= "-";
+	}
+	$rule .= $_[0];
+    }
+}
+
 sub print_tokens2 {
   $rule = "";
   $rule_is_long = 0;
   $range_beg = "";
   $lold = "";
   foreach $letter (sort  {
-    (length($a) <=> length($b)) || ($a cmp $b)
+    (length($b) <=> length($a)) || ($a cmp $b)
   } (keys %tokens)) {
     $lout = $letter;
     $lout =~ s/\~/~~/g;
     $lout =~ s/\"/~\"/g;
 # form ranges, e.g. abc -> a-c, but only for characters! (length 1)
 # for regexps, e.g. '([a-c]|ch|ll)+$'
-    if (length($lout)>1 || ord($lout) ne ord($lold)+1) {
-	if (ord($lold)-ord($range_beg) > 0) {
-	    if (ord($lold)-ord($range_beg) > 1) {
-		$rule .= "-";
-	    }
-	    $rule .= $lold;
-	}
+    if (length($lout)>1 || ord($lout) != ord($lold)+1) {
+	close_range($lold);
+	$open_range = 0;
 	$range_beg = $lout;
-	if (length($lout)==1 && length($lold)==0) {
+	if (length($lout)==1 && length($lold)!=1) {
+	    $rule .= "|" if $rule;
 	    $rule .= "[";
-	} elsif (length($lout)>1 && length($lold)==1) {
+	} elsif (length($lout)!=1 && length($lold)==1) {
 	    $rule .= "]";
 	}
 	if (length($lout)>1 && length($lold)>0) {
@@ -307,10 +313,13 @@ sub print_tokens2 {
 	    $rule_is_long = 1;
 	}
 	$rule .= $lout;
+    } else {
+	$open_range = 1;
     }
     $lold = $lout;
   }
-  if (length($lold)==1) {
+  close_range($lout) if ($open_range);
+  if (length($lout)==1) {
       $rule .= "]";
   }
   print XDY "(" if $rule_is_long;
