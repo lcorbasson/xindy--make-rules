@@ -10,6 +10,10 @@
 \hypersetup{pdfkeywords={xindy, index processor, sorting, languages, alphabets}}
 %\usepackage{thumbpdf}
 %\hypersetup{pdfkeywords={bevel gear load capacity}}
+\DeclareFontFamily{OT1}{kapiq}{}
+\DeclareFontShape{OT1}{kapiq}{m}{n}{<->kapiq}{}
+\newcommand{\klc}[1]{{\large\usefont{OT1}{kapiq}{m}{n}#1}}
+\newcommand{\kc}[1]{{\usefont{OT1}{kapiq}{m}{n}#1}}
 \newcommand{\idef}{}
 \newcommand{\fdef}{}
 \newcommand{\icod}{}
