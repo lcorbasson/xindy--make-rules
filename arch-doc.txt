@@ -11,7 +11,10 @@ The localization files for xindy are found
 
  1. in the directory lang/<language>:
 
-  a. root-tex-<variant>.xdy        or  root-tex.xdy
+  a.    root-tex-<variant>-<encoding>.xdy 
+     or root-tex-<variant>.xdy        
+     or root-tex-<encoding>.xdy        
+     or root-tex.xdy
   b. <variant>-<encoding>.xdy  or  <encoding>.xdy
   c. tex-<encoding>.xdy
 

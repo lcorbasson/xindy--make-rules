@@ -36,8 +36,9 @@ LOC="english"
 VAR=""
 DP="-tex"
 STYLE="styles/makeindex.xdy"
+ENC=""
 
-while getopts "m:v:d:tnl" OPT
+while getopts "m:v:d:e:tnls:" OPT
 do
   case "$OPT" in
     "m")
@@ -48,6 +49,9 @@ do
       ;;
     "d")
       DP="-$OPTARG"
+      ;;
+    "e")
+      ENC="-$OPTARG"
       ;;
     "t")
       DP="-tex"
@@ -69,7 +73,7 @@ DATA=$1
 
 tex2xindy <$DATA.idx >$DATA.raw
 
-ROOTFILE="lang/$LOC/root$DP$VAR.xdy"
+ROOTFILE="lang/$LOC/root$DP$VAR$ENC.xdy"
 
 # Create file containing both locale and style req's: 
 echo "(require \"$ROOTFILE\")" >$DATA.xdy
