@@ -59,6 +59,7 @@ XDYSCYR= \
   ukrainian/koi8-u.xdy ukrainian/cp1251.xdy
 
 XDYSOTHER= \
+  general/cp850.xdy \
   greek/iso88597.xdy \
   hebrew/iso88598.xdy
 
@@ -300,11 +301,15 @@ newcmp : $(CMPS)
 #	cat test.xdy >>$@
 
 %utf8.pl : %utf8.pl.in
-	sed -e 's/@u{\([^}]*\)}/\1/g;' <$< >$@
+	sed -e 's/@.{\([^}]*\)}/\1/g;' <$< >$@
 
 %latin1.pl : %utf8.pl.in
 	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
 	iconv --from-code=UTF-8 --to-code=LATIN1 >$@
+
+%cp850.pl : %utf8.pl.in
+	sed -e 's/@.{\([^}]*\)}//g;' <$< | \
+	iconv --from-code=UTF-8 --to-code=CP850 >$@
 
 romanian/latin2.pl : romanian/utf8.pl
 	sed -e 's/@u{\([^}]*\)}//g;' -f rom-comma-kludge.sed <$< | \
@@ -339,7 +344,7 @@ romanian/latin2.pl : romanian/utf8.pl
 	iconv --from-code=UTF-8 --to-code=LATIN5 >$@
 
 %latin9.pl : %utf8.pl.in
-	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	sed -e 's/@u{\([^}]*\)}//g;s/@9{\([^}]*\)}/\1/g;' <$< | \
 	iconv --from-code=UTF-8 --to-code=ISO-8859-15 >$@
 
 romanian/cp1250.pl : romanian/utf8.pl
@@ -355,7 +360,7 @@ romanian/cp1250.pl : romanian/utf8.pl
 	iconv --from-code=UTF-8 --to-code=CP1251 >$@
 
 %cp1252.pl : %utf8.pl.in
-	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
+	sed -e 's/@u{\([^}]*\)}//g;s/@9{\([^}]*\)}/\1/g;' <$< | \
 	iconv --from-code=UTF-8 --to-code=CP1252 >$@
 
 %isoir111.pl : %utf8.pl.in

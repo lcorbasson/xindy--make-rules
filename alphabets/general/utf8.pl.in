@@ -87,7 +87,7 @@ $alphabet = [
                    [], # r with caron (czech, slovak/large, upper sorbian)
                    [], # r with acute (lower sorbian)
                    [], # r with cedilla/comma (latvian)
-['S',  ['s','S'],['š','Š']@u{,['ś','Ś'],['ŝ','Ŝ'],['ș','Ș'],['ş','Ş']}],
+['S',  ['s','S']@9{,['š','Š']}@u{,['ś','Ś'],['ŝ','Ŝ'],['ș','Ș'],['ş','Ş']}],
                    [], # sh (albanian)
                    [], # sz (hungarian)
                    [], # s with caron (many)
@@ -117,10 +117,10 @@ $alphabet = [
                    [], # u with diaeresis (estonian)
 ['X',  ['x','X']],
                    [], # xh (albanian)
-['Y',  ['y','Y'],['ý','Ý'],['ÿ','Ÿ']],
+['Y',  ['y','Y'],['ý','Ý'],['ÿ'@9{,'Ÿ'}]],
                    [], # y preceded by apostrophe (hausa)
                    [], # yogh (english)
-['Z',  ['z','Z'],['ž','Ž']@u{,['ź','Ź'],['ż','Ż']}],
+['Z',  ['z','Z']@9{,['ž','Ž']}@u{,['ź','Ź'],['ż','Ż']}],
                    [], # zh (albanian)
                    [], # zs (hungarian)
                    [], # z with caron (many)
@@ -142,7 +142,7 @@ $sortcase = 'Aa';
 $ligatures = [
 [['ß'], 'after', [['s','s']]],
 [['æ','Æ'], 'after', [['a','e'], ['A','e']]],
-[['œ','Œ'], 'after', [['o','e'], ['O','e']]]
+@9{[['œ','Œ'], 'after', [['o','e'], ['O','e']]]}
 ];
 
 @special = ('?', '!', '.', 'letters', '-', '\'');
