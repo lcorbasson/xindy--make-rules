@@ -33,34 +33,58 @@ if [ "$1" = "" ] ; then
 fi
 
 LOC="english"
+LOCALE=NO
+PRE="en"
+
 VAR=""
-DP="-tex"
+DP="tex"
 STYLE="styles/makeindex.xdy"
-ENC=""
+ENC="ascii"
 
 while getopts "m:v:d:e:tnls:" OPT
 do
   case "$OPT" in
     "m")
       LOC="$OPTARG"
+      LOCALE=YES
+      case $LOC in
+        "english")
+        ENC="ascii"
+	PRE="en"
+        ;;
+        "finnish")
+        ENC="cp1252"
+        PRE="fi"
+        ;;
+        "spanish")
+        ENC="latin1"
+        PRE="es"
+        VAR="traditional-"
+        ;;
+      esac
+      IGNORESPECIAL="$IGNORESPECIAL \"$PRE-ignore-special\"" 
+      ALPHABETIZE="$ALPHABETIZE \"$PRE-alphabetize\"" 
+      RESOLVEDIACRITICS="$RESOLVEDIACRITICS \"$PRE-resolve-diacritics\"" 
+      RESOLVECASE="$RESOLVECASE \"$PRE-resolve-case\"" 
+      RESOLVESPECIAL="$RESOLVESPECIAL \"$PRE-resolve-special\"" 
       ;;
     "v")
-      VAR="-$OPTARG"
+      VAR="$OPTARG-"
       ;;
     "d")
-      DP="-$OPTARG"
+      DP="$OPTARG"
       ;;
     "e")
-      ENC="-$OPTARG"
+      ENC="$OPTARG"
       ;;
     "t")
-      DP="-tex"
+      DP="tex"
       ;;
     "n")
-      DP="-nroff"
+      DP="nroff"
       ;;
     "l")
-      DP="-lout"
+      DP="lout"
       ;;
     "s")
       STYLE="$OPTARG.xdy"
@@ -68,15 +92,35 @@ do
   esac
 done
 
+
+#
+if [ "$LOCALE" = "NO" ] ; then
+  IGNORESPECIAL="\"en-ignore-special\""
+  ALPHABETIZE="\"en-alphabetize\""
+  RESOLVEDIACRITICS="\"en-resolve-diacritics\"" 
+  RESOLVECASE="\"en-resolve-case\"" 
+  RESOLVESPECIAL="\"en-resolve-special\"" 
+fi
+
 shift $[$#-1]
 DATA=$1
 
 tex2xindy <$DATA.idx >$DATA.raw
 
-ROOTFILE="lang/$LOC/root$DP$VAR$ENC.xdy"
-
 # Create file containing both locale and style req's: 
-echo "(require \"$ROOTFILE\")" >$DATA.xdy
+echo "(require \"lang/$LOC/$DP-$VAR$ENC.xdy\")" >$DATA.xdy
+echo "(require \"lang/$LOC/$VAR$ENC.xdy\")" >>$DATA.xdy
+
+echo "(define-sort-rule-orientations (forward backward forward forward))" >>$DATA.xdy
+echo "(use-rule-set :run 0 :rule-set \
+	($ALPHABETIZE $IGNORESPECIAL))" >>$DATA.xdy
+echo "(use-rule-set :run 1 :rule-set \
+	($RESOLVEDIACRITICS $IGNORESPECIAL))" >>$DATA.xdy
+echo "(use-rule-set :run 2 :rule-set \
+	($RESOLVECASE $IGNORESPECIAL))" >>$DATA.xdy
+echo "(use-rule-set :run 3 :rule-set \
+	($RESOLVESPECIAL))" >>$DATA.xdy
+
 echo "(require \"$STYLE\")" >>$DATA.xdy
 
 xindy $DATA.xdy $DATA.raw
