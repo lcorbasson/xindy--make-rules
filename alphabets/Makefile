@@ -114,11 +114,14 @@ XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSLATIN4) $(XDYSLATIN5) \
   $(XDYSCYR) $(XDYSOTHER)
 
 INDS=$(XDYS:.xdy=.ind)
+PLS=$(XDYS:.xdy=.pl)
 INDUTF8S=$(XDYSUTF8:.xdy=.ind)
+PLSUTF8=$(XDYSUTF8:.xdy=.pl)
 CMPS=$(XDYS:.xdy=.ind.cmp)
 
 all : $(XDYS)
 utf8 : $(XDYSUTF8)
+distrib : $(PLS) $(PLSUTF8)
 
 DOCSLATIN1= \
   albanian/latin1-doc.tex \

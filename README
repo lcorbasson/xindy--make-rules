@@ -16,7 +16,7 @@ Requirements:
 - TeX and LaTeX
 - Perl 5 or higher
 - GNU make or an equivalent `make' program
-- for some files: GNU recode 3.5 or higher
+- If your favourite character set is not yet supported: iconv
 - xindy 2.0 or higher
 - Only for step 4.a): tex2xindy-noquote
 
