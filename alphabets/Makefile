@@ -150,7 +150,7 @@ DOCSLATIN1= \
   spanish/modern-latin1-doc.tex spanish/traditional-latin1-doc.tex \
   swedish/cp1252-doc.tex \
   turkish/tex-doc.tex
-  
+
 DOCSLATIN2= \
   croatian/latin2-doc.tex \
   czech/latin2-doc.tex \
@@ -216,7 +216,7 @@ DOCSUTF8LAT= \
   turkish/utf8-doc.tex \
   upper-sorbian/utf8-doc.tex \
   vietnamese/utf8-doc.tex
-  
+
 DOCSUTF8CYR= \
   belarusian/utf8-doc.tex \
   bulgarian/utf8-doc.tex \
@@ -385,7 +385,11 @@ romanian/cp1250.pl : romanian/utf8.pl
 
 install : all
 	mkdir -p $(INSTDIR)
-	cp -P */*.xdy $(INSTDIR)
+	for file in */*.xdy ; \
+	   do	dir=`dirname $$file` ; \
+		test -d $(INSTDIR)/$$dir  ||  mkdir $(INSTDIR)/$$dir ; \
+		cp $$file $(INSTDIR)/$$dir ; \
+	   done
 
 clean :
 	$(RM) $(XDYS) $(XDYSUTF8) *~ */*~ *.aux *.dvi *.toc *.log *.ps \
