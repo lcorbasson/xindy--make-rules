@@ -106,6 +106,7 @@ DOCSLATIN1= \
   icelandic/latin1-doc.tex \
   norwegian/latin1-doc.tex \
   portuguese/latin1-doc.tex \
+  romanian/tex-doc.tex \
   russian/translit-iso-tex-doc.tex \
   spanish/modern-latin1-doc.tex spanish/traditional-latin1-doc.tex \
   swedish/latin1-doc.tex \
@@ -117,7 +118,7 @@ DOCSLATIN2= \
   hungarian/latin2-doc.tex \
   lower-sorbian/latin2-doc.tex \
   polish/latin2-doc.tex \
-  romanian/latin2-doc.tex \
+#  romanian/latin2-doc.tex \
   slovak/small-latin2-doc.tex slovak/large-latin2-doc.tex \
   slovenian/latin2-doc.tex
 

@@ -56,3 +56,12 @@ s/Ŭ/\\u U/g;
 s/ä/\\"a/g;
 s/Ä/\\"A/g;
 s/ß/\\ss{}/g;
+# romanian:
+s/ș/\\ooalign{s\\crcr\\hidewidth\\raise-.3ex\\hbox{\\scriptsize,}\\hidewidth}/g;
+s/Ș/\\ooalign{S\\crcr\\hidewidth\\raise-.3ex\\hbox{\\scriptsize,}\\hidewidth}/g;
+s/ț/\\ooalign{t\\crcr\\hidewidth\\raise-.25ex\\hbox{\\scriptsize,}\\hidewidth}/g;
+s/Ț/\\ooalign{T\\crcr\\hidewidth\\raise-.25ex\\hbox{\\scriptsize,}\\hidewidth}/g;
+s/ă/\\u a/g;
+s/Ă/\\u A/g;
+s/î/\\^\\i/g;
+s/Î/\\^I/g;
