@@ -30,7 +30,7 @@ $begin = 150 if ($script eq "latin");
 $begin =  65 if ($script eq "greek");
   
 if (!$begin) {
-    $begin = 150;
+    $begin = 65;
 }
 
 print "Alphabet has " . @{$alphabet} . " elements.\n";

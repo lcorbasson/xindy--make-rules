@@ -1,3 +1,4 @@
+
 # $Id$
 
 ifdef MODDIR
@@ -148,7 +149,8 @@ DOCSCYR= \
   ukrainian/cp1251-doc.tex
 
 DOCSOTHER= \
-  greek/iso88597-doc.tex
+  greek/iso88597-doc.tex \
+  klingon/tex-doc.tex
 
 DOCS= $(DOCSLATIN1) $(DOCSLATIN2) $(DOCSLATIN5) \
   $(DOCSCYR) $(DOCSOTHER)
@@ -193,7 +195,8 @@ DOCSUTF8CYR= \
   ukrainian/utf8-doc.tex
 
 DOCSUTF8OTHER= \
-  greek/utf8-doc.tex
+  greek/utf8-doc.tex \
+  klingon/tex-doc.tex
 
 DOCSUTF8= $(DOCSUTF8LAT) $(DOCSUTF8CYR) $(DOCSUTF8OTHER)
 
