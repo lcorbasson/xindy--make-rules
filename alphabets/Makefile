@@ -177,7 +177,7 @@ DOCSUTF8LAT= \
   norwegian/utf8-doc.tex \
   polish/utf8-doc.tex \
   portuguese/utf8-doc.tex \
-  romanian/utf8-doc.tex \
+  romanian/utf8-kl-doc.tex \
   russian/translit-iso-utf8-doc.tex \
   slovak/small-utf8-doc.tex slovak/large-utf8-doc.tex \
   slovenian/utf8-doc.tex \
@@ -295,6 +295,9 @@ newcmp : $(CMPS)
 
 romanian/utf8.pl : romanian/latin2.pl
 	recode latin2..utf8 <$< | sed -f rom-comma-kludge.sed >$@
+
+romanian/utf8-kl-doc.tex : romanian/utf8-doc.tex
+	sed -f utf8-omega-kludge.sed <$< >$@
 
 %utf8.pl : %latin2.pl
 	recode latin2..utf-8 <$< >$@
