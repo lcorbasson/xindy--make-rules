@@ -32,7 +32,8 @@ Requirements:
 2. Testing
 
 - Type `make test'. This will take the file xorty-test.txt and output a file
-  xorty-sorted.txt, sorted according to traditional spanish sorting rules.
+  xorty-sorted.txt, sorted according to a set of sorting rules which is
+  suitable for many European languages.
   For testing purposes, a raw index file xorty-test.raw is also generated.
 
 - The contents of the sorted file `xorty-sorted.txt' should be equal to

@@ -1,9 +1,11 @@
+;; $Id$
+
 ;; read inputenc rules
 (require "tex/inputenc/latin1.xdy")
 
 ;; read language-specific (and encoding-specific) rule-sets
 (require "lang/spanish/traditional-latin1.xdy")
-(require "lang/swedish/latin1.xdy")
+(require "lang/swedish/latin9.xdy")
 
 ;; apply rules left-to-right or right-to-left?
 ;;                              run 0   run 1    run 2   run 3
@@ -19,7 +21,8 @@
    ("sv-resolve-case"       "es-resolve-case"
     "sv-ignore-special"     "es-ignore-special"))
 (use-rule-set :run 3 :rule-set
-   ("sv-resolve-special"    "es-resolve-special"))
+   ("sv-resolve-special"    "es-resolve-special"
+    "sv-resolve-letters"    "es-resolve-letters"))
 
 ;; define other stuff
 (define-attributes ("default"))

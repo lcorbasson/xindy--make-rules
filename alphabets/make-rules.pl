@@ -121,9 +121,9 @@ $f = 1;
 
 for ($l = 0; $l < @special; $l++) {
   if (@special[$l] eq "letters") {
-    $ref = \$l;
-    make_tokens();
-    process_ligatures();
+    $lett = $l;
+#    make_tokens();
+#    process_ligatures();
   } else {
     $token = chr($l+$offset);
     $tokens{@special[$l]} = $token;
@@ -131,6 +131,18 @@ for ($l = 0; $l < @special; $l++) {
 }
 
 print_tokens($prefix . "resolve-special");
+
+$ref = \$lett;
+make_tokens();
+process_ligatures();
+print XDY "(define-rule-set \"".$prefix."position\"\n\n  :rules  (\n"
+         ."           (\"";
+print_tokens2("+\$\" \"\"  ");
+print XDY "           (\"";
+print_tokens2("\"   \"~e\"");
+print XDY "))\n\n";
+
+print_tokens($prefix . "resolve-letters");
 
 # print doc:
 # alphabet
@@ -262,4 +274,47 @@ sub print_tokens {
   }
   print XDY "))\n\n";
   %tokens = ();
+}
+
+sub print_tokens2 {
+  $rule = "";
+  $rule_is_long = 0;
+  $range_beg = "";
+  $lold = "";
+  foreach $letter (sort  {
+    (length($a) <=> length($b)) || ($a cmp $b)
+  } (keys %tokens)) {
+    $lout = $letter;
+    $lout =~ s/\~/~~/g;
+    $lout =~ s/\"/~\"/g;
+# form ranges, e.g. abc -> a-c, but only for characters! (length 1)
+# for regexps, e.g. '([a-c]|ch|ll)+$'
+    if (length($lout)>1 || ord($lout) ne ord($lold)+1) {
+	if (ord($lold)-ord($range_beg) > 0) {
+	    if (ord($lold)-ord($range_beg) > 1) {
+		$rule .= "-";
+	    }
+	    $rule .= $lold;
+	}
+	$range_beg = $lout;
+	if (length($lout)==1 && length($lold)==0) {
+	    $rule .= "[";
+	} elsif (length($lout)>1 && length($lold)==1) {
+	    $rule .= "]";
+	}
+	if (length($lout)>1 && length($lold)>0) {
+	    $rule .= "|";
+	    $rule_is_long = 1;
+	}
+	$rule .= $lout;
+    }
+    $lold = $lout;
+  }
+  if (length($lold)==1) {
+      $rule .= "]";
+  }
+  print XDY "(" if $rule_is_long;
+  print XDY $rule;
+  print XDY ")" if $rule_is_long;
+  print XDY "$_[0] :bregexp)\n";
 }

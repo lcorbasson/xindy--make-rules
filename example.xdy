@@ -1,3 +1,5 @@
+;; $Id$
+
 ;; read inputenc rules
 (require "tex/inputenc/latin1.xdy")
 
@@ -16,7 +18,7 @@
 (use-rule-set :run 2
 	      :rule-set ("es-resolve-case" "es-ignore-special"))
 (use-rule-set :run 3
-	      :rule-set ("es-resolve-special"))
+	      :rule-set ("es-resolve-special" "es-resolve-letters"))
 
 ;; define other stuff
 (define-attributes ("default"))
