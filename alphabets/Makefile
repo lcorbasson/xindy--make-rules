@@ -17,8 +17,7 @@ XDYSLATIN1= \
   icelandic/latin1.xdy \
   norwegian/latin1.xdy \
   portuguese/latin1.xdy \
-  russian/translit-tex.xdy \
-  russian/translit-tgl-tex.xdy \
+  russian/translit-iso-tex.xdy \
   spanish/modern-latin1.xdy spanish/traditional-latin1.xdy \
   swedish/latin1.xdy \
   general/latin1.xdy
@@ -36,7 +35,9 @@ XDYSLATIN2= \
 
 XDYSLATIN3= \
   esperanto/latin3.xdy \
-  turkish/latin3.xdy
+
+XDYSLATIN5= \
+  turkish/latin5.xdy
 
 XDYSCYR= \
   belarusian/isoir111.xdy belarusian/iso88595.xdy belarusian/cp1251.xdy \
@@ -73,8 +74,7 @@ XDYSUTF8= \
   portuguese/utf8.xdy \
   romanian/utf8.xdy \
   russian/utf8.xdy \
-  russian/translit-utf8.xdy \
-  russian/translit-tgl-utf8.xdy \
+  russian/translit-iso-utf8.xdy \
   serbian/utf8.xdy \
   slovak/small-utf8.xdy slovak/large-utf8.xdy \
   slovenian/utf8.xdy \
@@ -83,10 +83,11 @@ XDYSUTF8= \
   turkish/utf8.xdy \
   ukrainian/utf8.xdy
 
-XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSLATIN6) \
+XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSLATIN5) \
   $(XDYSCYR) $(XDYSOTHER)
 
 INDS=$(XDYS:.xdy=.ind)
+INDUTF8S=$(XDYSUTF8:.xdy=.ind)
 CMPS=$(XDYS:.xdy=.ind.cmp)
 
 all : $(XDYS)
@@ -100,13 +101,12 @@ DOCSLATIN1= \
   finnish/cp1252-doc.tex \
   french/cp1252-doc.tex \
   general/latin1-doc.tex \
-  german/din5007-latin1-doc.tex german/duden-latin1-doc.tex \
+  german/din5007-tex-doc.tex german/duden-tex-doc.tex \
   greek/translit-tex-doc.tex \
   icelandic/latin1-doc.tex \
   norwegian/latin1-doc.tex \
   portuguese/latin1-doc.tex \
-  russian/translit-tex-doc.tex \
-  russian/translit-tgl-tex-doc.tex \
+  russian/translit-iso-tex-doc.tex \
   spanish/modern-latin1-doc.tex spanish/traditional-latin1-doc.tex \
   swedish/latin1-doc.tex \
   turkish/tex-doc.tex \
@@ -121,9 +121,7 @@ DOCSLATIN2= \
   slovak/small-latin2-doc.tex slovak/large-latin2-doc.tex \
   slovenian/latin2-doc.tex
 
-DOCSLATIN3= \
-  esperanto/latin3-doc.tex \
-  turkish/latin3-doc.tex
+DOCSLATIN3=
 
 DOCSCYR= \
   belarusian/cp1251-doc.tex \
@@ -136,7 +134,7 @@ DOCSCYR= \
 DOCSOTHER= \
   greek/iso88597-doc.tex
 
-DOCS= $(DOCSLATIN1) $(DOCSLATIN2) $(DOCSLATIN6) \
+DOCS= $(DOCSLATIN1) $(DOCSLATIN2) $(DOCSLATIN5) \
   $(DOCSCYR) $(DOCSOTHER)
 
 alphabets-inc.tex : $(DOCS)
@@ -145,8 +143,8 @@ alphabets-inc.tex : $(DOCS)
 	for i in $(DOCSLATIN1); do echo "\input{$$i}" >>$@; done
 	echo "\ienc{latin2}" >>$@
 	for i in $(DOCSLATIN2); do echo "\input{$$i}" >>$@; done
-	echo "\ienc{latin3}" >>$@
-	for i in $(DOCSLATIN3); do echo "\input{$$i}" >>$@; done
+#	echo "\ienc{latin5}" >>$@
+#	for i in $(DOCSLATIN5); do echo "\input{$$i}" >>$@; done
 	echo "\ienc{cp1251}" >>$@
 	echo "\fenc{T2A}" >>$@
 	echo "\section{Cyrillic scripts}" >>$@
@@ -165,6 +163,8 @@ alphabets-doc.pdf : alphabets-doc.tex alphabets-inc.tex
 	pdflatex alphabets-doc.tex
 
 test : $(INDS)
+
+testutf8 : $(INDUTF8S)
 
 %.ps : %.dvi
 	dvips $<
@@ -220,6 +220,9 @@ romanian/utf8.pl : romanian/latin2.pl
 %utf8.pl : %latin3.pl
 	recode latin3..utf-8 <$< >$@
 
+%utf8.pl : %latin5.pl
+	recode latin5..utf-8 <$< >$@
+
 %utf8.pl : %latin9.pl
 	recode latin9..utf-8 <$< >$@
 
@@ -235,8 +238,8 @@ romanian/utf8.pl : romanian/latin2.pl
 %utf8.pl : %iso88597.pl
 	recode iso-8859-7..utf-8 <$< >$@
 
-%tex.pl : %utf8.pl utf8-to-tex.sed tex-to-xindy-rules.sed
-	sed -f utf8-to-tex.sed -f tex-to-xindy-rules.sed <$< >$@
+%tex.pl : %utf8.pl utf8-to-tex.sed
+	sed -f utf8-to-tex.sed <$< >$@
 
 install : all
 	mkdir -p $(INSTDIR)

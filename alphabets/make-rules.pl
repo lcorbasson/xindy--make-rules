@@ -24,10 +24,15 @@ print "Alphabet has " . @{$alphabet} . " elements.\n";
 for ($i = 0; $i < @{$alphabet}; $i++) {
   if (defined($alphabet->[$i][0])) {  
     $letter = $alphabet->[$i][0];
+    $lout = $letter;
+    $lout =~ s/\~/~~/g;
+    $lout =~ s/\"/~\"/g;
     $token = chr($i+$begin);
+    $token =~ s/\~/~~/g;
+    $token =~ s/\"/~\"/g;
     if ($after ne $letter) {
       print XDY "\"))\n" if ($i);
-      print XDY "(define-letter-group \"$letter\"";
+      print XDY "(define-letter-group \"$lout\"";
       print XDY " :after \"$after\"" if ($i);
       print XDY " :prefixes (\"";
     } else {
@@ -136,7 +141,7 @@ print_tokens($prefix . "resolve-special");
 
 # ligatures
   print DOC "\n\\subsubsection{Ligatures}\n";
-  print DOC "\\begin{tabbing}\n";
+  print DOC "\\begin{flushleft}\n";
   print DOC "None.\n" unless @{$ligatures};
   @m = ();
   for ($i = 0; $i < @{$ligatures}; $i++) {
@@ -147,7 +152,7 @@ print_tokens($prefix . "resolve-special");
     }
   }
   print DOC join("\\\\\n", (@m));
-  print DOC "\n\\end{tabbing}\n";
+  print DOC "\n\\end{flushleft}\n";
 
 # case
   print DOC "\n\\subsubsection{Upper-/lowercase words}\n";
@@ -230,7 +235,13 @@ sub print_tokens {
   foreach $letter (sort {
     (length($b) <=> length($a)) || ($tokens{$a} cmp $tokens{$b})
   } (keys %tokens)) {
-    print XDY "(\"$letter\" \"$tokens{$letter}\" :string)\n           ";
+    $lout = $letter;
+    $lout =~ s/\~/~~/g;
+    $lout =~ s/\"/~\"/g;
+    $tout = $tokens{$letter};
+    $tout =~ s/\~/~~/g;
+    $tout =~ s/\"/~\"/g;
+    print XDY "(\"$lout\" \"$tout\" :string)\n           ";
   }
   print XDY "))\n\n";
   %tokens = ();

@@ -96,7 +96,7 @@ $alphabet = [
                    [], # o with stroke (danish, norwegian)
                    [], # a with ring above (danish, norwegian, swedish)
                    [], # a with diaeresis (finnish, swedish)
-['Ö',  ['ö','Ö']]
+                   []  # o with diaeresis (finnish, swedish)
 ];
 
 $sortcase = 'Aa';
