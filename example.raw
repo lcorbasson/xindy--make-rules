@@ -40,3 +40,6 @@
 (indexentry :key ("réfere") :locref "5")
 (indexentry :key ("référe") :locref "5")
 (indexentry :key ("Muehe") :print ("Mühe") :locref "6")
+(indexentry :key ("[d") :locref "5")
+(indexentry :key ("{d") :locref "5")
+(indexentry :key ("=d") :locref "5")

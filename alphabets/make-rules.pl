@@ -11,8 +11,12 @@ if ($prefix) {
     $prefix = $prefix . '-';
 }
 
+$begin = 127 if ($script eq "cyrillic");
+$begin = 180 if ($script eq "latin");
+$begin =  65 if ($script eq "greek");
+  
 if (!$begin) {
-    $begin = 161;
+    $begin = 180;
 }
 
 print "Alphabet has " . @{$alphabet} . " elements.\n";

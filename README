@@ -18,6 +18,8 @@ Requirements:
 - GNU make or an equivalent `make' program
 - for some files: GNU recode 3.5 or higher
 - xindy 2.0 or higher
+- Only for step 4.a): tex2xindy-noquote
+
 
 1. Installation of alphabets
 
@@ -28,6 +30,8 @@ Requirements:
 - Check the Makefile, especially the variable INSTDIR.
 
 - Type `make all'.
+
+- If you additionally want to use UTF-8 encoding, also type `make utf8'.
 
 - Type `make install'.
 
@@ -42,15 +46,15 @@ Requirements:
 
 - Type `make install'.
 
-- As the `inputenc' package may change in the future, it is recommend to
-  re-make these rules whenever you upgrade your TeX system.
+- As the `inputenc' package of TeX may change in the future, it is recommend
+  to re-make these rules whenever you upgrade your TeX system.
 
 
 3. Testing
 
 - Change dir to back to the top-level directory.
 
-- Type `make'.
+- Type `make example.ind'.
 
 - The contents of the sorted index file `example.ind' should be equal to
   `example.cmp'. You can check this with the command
@@ -59,10 +63,12 @@ Requirements:
 
 4. Even more testing (optional)
 
+a)
 - Change dir to the inputenc/ sub-directory.
 
 - Type `make test'. No error messages should appear.
 
+b)
 - Change dir to the alphabets/ sub-directory.
 
 - Type `make <language>/[<variant>-]<encoding>.ind'
@@ -73,10 +79,13 @@ Requirements:
 - Now check the resulting *.ind file if the sorting result is okay. If not,
   the corresponding log file (*.xlg) might give a clue as to what went wrong.
 
+
 5. Usage
 
 - Copy the file `example.xdy' somewhere and modify it according to your
   wishes! Simple as that!
 
+- An example of mixing different languages in one index is in example-mix.xdy.
+
 --
-Thomas Henlich (thenlich@rcs.urz.tu-dresden.de)
+Thomas Henlich (thenlich@web.de)

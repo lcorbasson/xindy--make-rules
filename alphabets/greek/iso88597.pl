@@ -2,6 +2,7 @@
 
 $language = "Greek";
 $prefix = "el";
+$script = "greek";
 
 $alphabet = [
 ['Á',    ['á', 'Á'],   ['Ü','¶']],
