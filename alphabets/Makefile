@@ -153,6 +153,50 @@ DOCSOTHER= \
 DOCS= $(DOCSLATIN1) $(DOCSLATIN2) $(DOCSLATIN5) \
   $(DOCSCYR) $(DOCSOTHER)
 
+DOCSUTF8LAT= \
+  albanian/utf8-doc.tex \
+  croatian/utf8-doc.tex \
+  czech/utf8-doc.tex \
+  danish/utf8-doc.tex \
+  english/utf8-doc.tex \
+  dutch/utf8-doc.tex \
+  esperanto/utf8-doc.tex \
+  finnish/utf8-doc.tex \
+  french/utf8-doc.tex \
+  general/utf8-doc.tex \
+  german/din5007-utf8-doc.tex german/duden-utf8-doc.tex \
+  greek/translit-utf8-doc.tex \
+  hungarian/utf8-doc.tex \
+  icelandic/utf8-doc.tex \
+  italian/utf8-doc.tex \
+  kurdish/utf8-doc.tex \
+  lithuanian/utf8-doc.tex \
+  lower-sorbian/utf8-doc.tex \
+  norwegian/utf8-doc.tex \
+  polish/utf8-doc.tex \
+  portuguese/utf8-doc.tex \
+  romanian/utf8-doc.tex \
+  russian/translit-iso-utf8-doc.tex \
+  slovak/small-utf8-doc.tex slovak/large-utf8-doc.tex \
+  slovenian/utf8-doc.tex \
+  spanish/modern-utf8-doc.tex spanish/traditional-utf8-doc.tex \
+  swedish/utf8-doc.tex \
+  turkish/utf8-doc.tex \
+  upper-sorbian/utf8-doc.tex
+  
+DOCSUTF8CYR= \
+  belarusian/utf8-doc.tex \
+  bulgarian/utf8-doc.tex \
+  macedonian/utf8-doc.tex \
+  russian/utf8-doc.tex \
+  serbian/utf8-doc.tex \
+  ukrainian/utf8-doc.tex
+
+DOCSUTF8OTHER= \
+  greek/utf8-doc.tex
+
+DOCSUTF8= $(DOCSUTF8LAT) $(DOCSUTF8CYR) $(DOCSUTF8OTHER)
+
 alphabets-inc.tex : $(DOCS)
 	$(RM) $@
 	echo "\section{Latin scripts}" >>$@
@@ -170,6 +214,15 @@ alphabets-inc.tex : $(DOCS)
 	echo "\section{Other scripts}" >>$@
 	for i in $(DOCSOTHER); do echo "\input{$$i}" >>$@; done
 
+alphabets-inc-lambda.tex : $(DOCSUTF8)
+	$(RM) $@
+	echo "\section{Latin scripts}" >>$@
+	for i in $(DOCSUTF8LAT); do echo "\input{$$i}" >>$@; done
+	echo "\section{Cyrillic scripts}" >>$@
+	for i in $(DOCSUTF8CYR); do echo "\input{$$i}" >>$@; done
+	echo "\section{Other scripts}" >>$@
+	for i in $(DOCSUTF8OTHER); do echo "\input{$$i}" >>$@; done
+
 alphabets-doc.dvi : alphabets-doc.tex alphabets-inc.tex
 	latex alphabets-doc.tex
 	latex alphabets-doc.tex
@@ -177,6 +230,16 @@ alphabets-doc.dvi : alphabets-doc.tex alphabets-inc.tex
 alphabets-doc.pdf : alphabets-doc.tex alphabets-inc.tex
 	pdflatex alphabets-doc.tex
 	pdflatex alphabets-doc.tex
+
+alphabets-doc-lambda.dvi : alphabets-doc-lambda.tex alphabets-inc-lambda.tex
+	lambda alphabets-doc-lambda.tex
+	lambda alphabets-doc-lambda.tex
+
+alphabets-doc-lambda.ps : alphabets-doc-lambda.dvi
+	odvips $<
+
+alphabets-doc-lambda.pdf : alphabets-doc-lambda.ps
+	ps2pdf $<
 
 test : $(INDS)
 
