@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
 $language = "Kurdish";
+$variant = "Turkish i";
 $prefix = "ku";
 $script = "latin";
 
@@ -44,10 +45,10 @@ $alphabet = [
 ['H',  ['h','H']],
                    [], # h with circumflex (esperanto)
                    [], # ch (many)
-                   [], # dotless i (turkish)
-['I',  ['i','I']],
+['I',  ['ı','I']],
+['İ',  ['i','İ']],
                    [], # i with inverted breve below (gypsy/northrussian)
-['Î',  ['î','Î']],
+                   [], # i with circumflex (kurdish, romanian)
                    [], # i with diaeresis (gypsy/northrussian)
 ['J',  ['j','J']],
                    [], # j with circumflex (esperanto)

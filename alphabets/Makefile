@@ -46,7 +46,8 @@ XDYSLATIN4= \
   lithuanian/latin4.xdy \
 
 XDYSLATIN5= \
-  kurdish/latin5.xdy \
+  kurdish/bedirxan-latin5.xdy \
+  kurdish/turkish-i-latin5.xdy \
   turkish/latin5.xdy
 
 XDYSCYR= \
@@ -76,7 +77,7 @@ XDYSUTF8= \
   french/utf8.xdy \
   general/utf8.xdy \
   georgian/utf8.xdy \
-  german/din5007-utf8.xdy german/duden-utf8.xdy \
+  german/din5007-utf8.xdy german/duden-utf8.xdy german/braille-utf8.xdy \
   greek/translit-utf8.xdy \
   greek/utf8.xdy \
   gypsy/northrussian-utf8.xdy \
@@ -85,7 +86,8 @@ XDYSUTF8= \
   icelandic/utf8.xdy \
   italian/utf8.xdy \
   klingon/utf8.xdy \
-  kurdish/utf8.xdy \
+  kurdish/bedirxan-utf8.xdy \
+  kurdish/turkish-i-utf8.xdy \
   latin/utf8.xdy \
   latvian/utf8.xdy \
   lithuanian/utf8.xdy \
@@ -132,7 +134,8 @@ DOCSLATIN1= \
   greek/translit-latin4-doc.tex \
   icelandic/cp1252-doc.tex \
   italian/latin1-doc.tex \
-  kurdish/tex-doc.tex \
+  kurdish/bedirxan-tex-doc.tex \
+  kurdish/turkish-i-tex-doc.tex \
   lithuanian/tex-doc.tex \
   norwegian/latin1-doc.tex \
   portuguese/latin1-doc.tex \
@@ -188,7 +191,8 @@ DOCSUTF8LAT= \
   hungarian/utf8-doc.tex \
   icelandic/utf8-doc.tex \
   italian/utf8-doc.tex \
-  kurdish/utf8-doc.tex \
+  kurdish/bedirxan-utf8-doc.tex \
+  kurdish/turkish-i-utf8-doc.tex \
   latin/utf8-doc.tex \
   latvian/utf8-doc.tex \
   lithuanian/utf8-doc.tex \
@@ -216,9 +220,10 @@ DOCSUTF8CYR= \
   ukrainian/utf8-doc.tex
 
 DOCSUTF8OTHER= \
-  georgian/utf8-doc.tex \
   greek/utf8-doc.tex \
   klingon/tex-doc.tex
+#  georgian/tex-doc.tex \
+#  german/braille-utf8-doc.tex \
 
 DOCSUTF8= $(DOCSUTF8LAT) $(DOCSUTF8CYR) $(DOCSUTF8OTHER)
 
