@@ -162,9 +162,9 @@ print_tokens($prefix . "resolve-special");
 # special
 print DOC "\n\\subsubsection{Special characters}\n";
 print DOC "The order of special characters and letters is:\n";
-print DOC "\\begin{verbatim}\n";
-print DOC join(" ", (@special));
-print DOC "\n\\end{verbatim}\n";
+print DOC "\\begin{flushleft}\n";
+print DOC join("\\hspace{4mm}", (@special));
+print DOC "\n\\end{flushleft}\n";
 print DOC "\\newpage\n";
 
 # end

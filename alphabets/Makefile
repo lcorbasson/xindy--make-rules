@@ -232,8 +232,8 @@ romanian/utf8.pl : romanian/latin2.pl
 %utf8.pl : %iso88597.pl
 	recode iso-8859-7..utf-8 <$< >$@
 
-%tex.pl : %utf8.pl utf8-to-tex.sed
-	sed -f utf8-to-tex.sed <$< >$@
+%tex.pl : %utf8.pl utf8-to-tex.sed tex-to-xindy-rules.sed
+	sed -f utf8-to-tex.sed -f tex-to-xindy-rules.sed <$< >$@
 
 install : all
 	mkdir -p $(INSTDIR)

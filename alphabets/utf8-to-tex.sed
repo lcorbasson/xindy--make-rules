@@ -1,3 +1,5 @@
+# $Id$
+# translate UTF-8 to something that TeX understands
 s/č/\\v c/g;
 s/Č/\\v C/g;
 s/ė/\\.e/g;
