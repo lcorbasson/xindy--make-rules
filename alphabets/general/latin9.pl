@@ -65,7 +65,7 @@ $alphabet = [
                    [], # rr (albanian)
                    [], # r with caron (czech, slovak/large, upper sorbian)
                    [], # r with acute (lower sorbian)
-['S',  ['s','S']],
+['S',  ['s','S'],['¨','¦']],
                    [], # sh (albanian)
                    [], # sz (hungarian)
                    [], # s with caron (many)
@@ -86,8 +86,8 @@ $alphabet = [
 ['W',  ['w','W']],
 ['X',  ['x','X']],
                    [], # xh (albanian)
-['Y',  ['y','Y'],['ý','Ý'],['ÿ']],
-['Z',  ['z','Z']],
+['Y',  ['y','Y'],['ý','Ý'],['ÿ','¾']],
+['Z',  ['z','Z'],['¸','´']],
                    [], # zh (albanian)
                    [], # zs (hungarian)
                    [], # z with caron (many)
@@ -106,7 +106,8 @@ $sortcase = 'Aa';
 
 $ligatures = [
 [['ß'], 'after', [['s','s']]],
-[['æ','Æ'], 'after', [['a','e'], ['A','e']]]
+[['æ','Æ'], 'after', [['a','e'], ['A','e']]],
+[['½','¼'], 'after', [['o','e'], ['O','e']]]
 ];
 
 @special = ('?', '!', '.', 'letters', '-', '\'');

@@ -22,7 +22,7 @@ XDYSLATIN1= \
   russian/translit-iso-tex.xdy \
   spanish/modern-latin1.xdy spanish/traditional-latin1.xdy \
   swedish/latin1.xdy \
-  general/latin1.xdy \
+  general/latin9.xdy general/cp1252.xdy \
   dutch/latin1.xdy 
 
 XDYSLATIN2= \
@@ -114,7 +114,7 @@ DOCSLATIN1= \
   esperanto/tex-doc.tex \
   finnish/cp1252-doc.tex \
   french/cp1252-doc.tex \
-  general/latin1-doc.tex \
+  general/cp1252-doc.tex \
   german/din5007-tex-doc.tex german/duden-tex-doc.tex \
   greek/translit-tex-doc.tex \
   icelandic/latin1-doc.tex \
