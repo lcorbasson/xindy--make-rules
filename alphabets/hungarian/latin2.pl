@@ -19,7 +19,7 @@ $alphabet = [
                    [], # c with caron (many)
                    [], # c with acute (croatian, lower sorbian, polish)
                    [], # c with circumflex (esperanto)
-                   [], # c with cedilla (albanian, turkish)
+                   [], # c with cedilla (albanian, kurdish, turkish)
 ['D',  ['d','D'],['dz','Dz','DZ'],['dzs','Dzs','DZs','DZS']],
                    [], # dh (albanian)
                    [], # d+z with caron (croatian)

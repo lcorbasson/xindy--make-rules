@@ -1,0 +1,19 @@
+;; read language-specific (and encoding-specific) rule-sets
+(require "lang/spanish/traditional-latin1.xdy")
+
+;; apply rules left-to-right or right-to-left?
+;;                              run 0   run 1    run 2   run 3
+(define-sort-rule-orientations (forward backward forward forward))
+
+;; define order of sorting runs
+(use-rule-set :run 0
+	      :rule-set ("es-alphabetize" "es-ignore-special"))
+(use-rule-set :run 1
+	      :rule-set ("es-resolve-diacritics" "es-ignore-special"))
+(use-rule-set :run 2
+	      :rule-set ("es-resolve-case" "es-ignore-special"))
+(use-rule-set :run 3
+	      :rule-set ("es-resolve-special"))
+
+;; define other stuff
+(require "misc/xorty.xdy")

@@ -17,7 +17,7 @@ $alphabet = [
 ['È',    ['è','È']],
                    [], # c with acute (croatian, lower sorbian, polish)
                    [], # c with circumflex (esperanto)
-                   [], # c with cedilla (albanian, turkish)
+                   [], # c with cedilla (albanian, kurdish, turkish)
 ['D',    ['d','D']],
                    [], # dh (albanian)
                    [], # d+z with caron (croatian)

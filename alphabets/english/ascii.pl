@@ -4,12 +4,6 @@ $language = "English";
 $prefix = "en";
 $script = "latin";
 
-# preferred order of diacritics of not specified otherwise:
-# go from little to big, from non-touching to touching
-
-# caron acute dot-above breve circumflex tilde
-# ring-above diaeresis cedilla ogonek stroke
-
 $alphabet = [
 ['A',  ['a','A']],
                    [], # a with breve (romanian)
@@ -22,7 +16,7 @@ $alphabet = [
                    [], # c with caron (many)
                    [], # c with acute (croatian, lower sorbian, polish)
                    [], # c with circumflex (esperanto)
-                   [], # c with cedilla (albanian, turkish)
+                   [], # c with cedilla (albanian, kurdish, turkish)
 ['D',  ['d','D']],
                    [], # dh (albanian)
                    [], # d+z with caron (croatian)

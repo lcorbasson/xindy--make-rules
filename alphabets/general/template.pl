@@ -1,106 +1,116 @@
 #!/usr/bin/perl
 
-$language = "Norwegian";
-$prefix = "no";
+$language = "Template";
+$prefix = "??";
 $script = "latin";
 
+# preferred order of diacritics of not specified otherwise:
+# go from little to big, from non-touching to touching
+
+# caron acute dot-above breve circumflex tilde
+# ring-above diaeresis comma-below cedilla ogonek stroke
+
 $alphabet = [
-['A',  ['a','A']],
+                   [], # a (many)
                    [], # a with breve (romanian)
                    [], # a with circumflex (romanian)
                    [], # a with ogonek (polish)
-['B',  ['b','B']],
-['C',  ['c','C']],
+                   [], # b (many)
+                   [], # c (many)
                    [], # ch (spanish/traditional)
                    [], # cs (hungarian)
                    [], # c with caron (many)
                    [], # c with acute (croatian, lower sorbian, polish)
                    [], # c with circumflex (esperanto)
-                   [], # c with cedilla (albanian, kurdish, turkish)
-['D',  ['d','D']],
+                   [], # c with cedilla (albanian, kurdish, turkish) @@
+                   [], # d (many)
                    [], # dh (albanian)
                    [], # d+z with caron (croatian)
+                   [], # d+z with acute (upper sorbian) @@
                    [], # d with stroke (croatian)
                    [], # d with caron (slovak/large)
                    [], # eth (icelandic)
-['E',  ['e','E']],
-                   [], # e with caron (lower sorbian)
+                   [], # e (many)
+                   [], # e with caron (lower/upper sorbian) @@
+                   [], # e with circumflex (kurdish) @@
                    [], # e with diaeresis (albanian)
                    [], # e with ogonek (polish)
-['F',  ['f','F']],
-['G',  ['g','G']],
+                   [], # f (many)
+                   [], # g (many)
                    [], # gj (albanian)
                    [], # g with circumflex (esperanto)
                    [], # g with breve (turkish)
-['H',  ['h','H']],
+                   [], # h (many)
                    [], # h with circumflex (esperanto)
                    [], # ch (many)
                    [], # dotless i (turkish)
-['I',  ['i','I']],
-                   [], # i with circumflex (romanian)
-['J',  ['j','J']],
+                   [], # i (many)
+                   [], # i with circumflex (kurdish, romanian) @@
+                   [], # j (many)
                    [], # j with circumflex (esperanto)
-['K',  ['k','K']],
-                   [], # l with stroke (lower sorbian)
-['L',  ['l','L']],
+                   [], # k (many)
+                   [], # l with stroke (lower/upper sorbian) @@
+                   [], # l (many)
                    [], # l with stroke (polish)
                    [], # l with caron (slovak/large)
                    [], # lj (croatian)
                    [], # ll (albanian, spanish/traditional)
-['M',  ['m','M']],
-['N',  ['n','N']],
+                   [], # m (many)
+                   [], # n (many)
                    [], # nj (albanian, croatian)
                    [], # ny (hungarian)
                    [], # n with tilde (spanish/modern, spanish/traditional)
-                   [], # n with acute (lower sorbian, polish)
+                   [], # n with acute (lower/upper sorbian, polish) @@
                    [], # n with caron (slovak/large)
-['O',  ['o','O']],
-                   [], # o with acute (polish)
+                   [], # o (many)
+                   [], # o with acute (polish, upper sorbian) @@
                    [], # o with diaeresis (hungarian, turkish)
-['P',  ['p','P']],
-['Q',  ['q','Q']],
-['R',  ['r','R']],
+                   [], # p (many)
+                   [], # q (many)
+                   [], # r (many)
                    [], # rr (albanian)
-                   [], # r with caron (czech, slovak/large)
+                   [], # r with caron (czech, slovak/large, upper sorbian) @@
                    [], # r with acute (lower sorbian)
-['S',  ['s','S']],
+                   [], # s (many)
                    [], # sh (albanian)
                    [], # sz (hungarian)
                    [], # s with caron (many)
                    [], # s with acute (lower sorbian, polish)
                    [], # s with circumflex (esperanto)
-                   [], # s with cedilla (romanian, turkish)
-['T',  ['t','T']],
+                   [], # s with comma below (romanian) @@
+                   [], # s with cedilla (kurdish, turkish) @@
+                   [], # t (many)
                    [], # th (albanian)
                    [], # t with caron (slovak/large)
-                   [], # t with cedilla (romanian)
-['U',  ['u','U']],
+                   [], # t with comma below (romanian) @@
+                   [], # c with acute (upper sorbian) @@
+                   [], # u (many)
                    [], # u with breve (esperanto)
+                   [], # u with circumflex (kurdish) @@
                    [], # u with diaeresis (hungarian, turkish)
-['V',  ['v','V']],
-['W',  ['w','W']],
-['X',  ['x','X']],
+                   [], # v (many)
+                   [], # w (many)
+                   [], # x (many)
                    [], # xh (albanian)
-['Y',  ['y','Y']],
-['Z',  ['z','Z']],
+                   [], # y (many)
+                   [], # z (many)
                    [], # zh (albanian)
                    [], # zs (hungarian)
                    [], # z with caron (many)
                    [], # z with acute (lower sorbian, polish)
                    [], # z with dot above (polish)
                    [], # thorn (icelandic)
-['Æ',  ['æ','Æ']],
-['Ø',  ['ø','Ø']],
-['Å',  ['å','Å']],
+                   [], # ligature ae (danish, icelandic, norwegian)
+                   [], # o with stroke (danish, norwegian)
+                   [], # a with ring above (danish, norwegian, swedish)
                    [], # a with diaeresis (finnish, swedish)
-                   []  # o with diaeresis (hungarian, turkish)
+                   []  # o with diaeresis (finnish, swedish)
 ];
 
 $sortcase = 'Aa';
 #$sortcase = 'aA';
 
 $ligatures = [
-[['ß'], 'after', [['s','s']]]
 ];
 
 @special = ('?', '!', '.', 'letters', '-', '\'');

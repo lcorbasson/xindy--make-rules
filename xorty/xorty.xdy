@@ -1,0 +1,8 @@
+;; define a dummy cross-reference class
+;; (it should contain an empty string)
+(define-crossref-class "xorty" :unverified)
+
+;; separate all keywords by newline
+(markup-keyword :close "~n")
+
+;; Simple as that!

@@ -1,0 +1,49 @@
+XORTY
+
+This is an xindy package to sort a text file (one entry on each line).
+It uses the language-specific rules of the make-rules package.
+
+This package contains the following:
+
+1. A raw index filter (written in C) to transform the input text file into a
+form suitable for xindy.
+
+2. A xindy style file for formatting the output as a simple text file.
+
+
+INSTALLATION INSTRUCTIONS
+
+Requirements:
+- C compiler
+- C library which provides the getline() function (e.g. Linux)
+- GNU make or an equivalent `make' program
+- xindy 2.0 or higher
+
+
+1. Installation
+
+- Check the Makefile, especially the variables BINDIR and MODDIR.
+
+- Type `make'. This builds the raw index filter.
+
+- As root, type `make install'.
+
+
+2. Testing
+
+- Type `make test'. This will take the file xorty-test.txt and output a file
+  xorty-sorted.txt, sorted according to traditional spanish sorting rules.
+  For testing purposes, a raw index file xorty-test.raw is also generated.
+
+- The contents of the sorted file `xorty-sorted.txt' should be equal to
+  `xorty-sorted.cmp'. You can check this with the command
+  'diff xorty-sorted.cmp xorty-sorted.txt' which should give NO output.
+
+
+3. Usage
+
+- Copy the file `example.xdy' somewhere and modify it according to your
+  wishes! Simple as that!
+
+--
+Thomas Henlich (thenlich@web.de)
