@@ -7,24 +7,16 @@
 ;; position.
 
 
-(merge-rule "\~"u" "ü" :string)
-(merge-rule "\~"U" "Ü" :string)
-
 (merge-rule "\aa"  "å" :string)
-(merge-rule "\~"a" "ä" :string)
-(merge-rule "\~"o" "ö" :string)
-(merge-rule "\~"A" "Ä" :string)
-(merge-rule "\AA"  "Å" :string)
-(merge-rule "\~"O" "Ö" :string)
 (merge-rule "\AA"  "Å" :string)
 
-(merge-rule "\'E"  "E" :string)
-(merge-rule "\'e"  "e" :string)
-
-(merge-rule "\v S" "S" :string)
-(merge-rule "\v s" "s" :string)
+(merge-rule "\'E"  "É" :string)
+(merge-rule "\'e"  "é" :string)
 
 (merge-rule "\ss" "ß" :string)
+
+;; To handle \citeindextrue index entries within {} 
+;; (make it better if you can!)
 
 (merge-rule "{" "" :string)
 
