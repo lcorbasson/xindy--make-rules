@@ -1,10 +1,14 @@
 #!/bin/sh
-
-
+#
+# This script is at the same time the documentation for the localization architecture
+# used in Xindy/make-rules.
+#
+# Print out help text:
+#
 if [ "$1" = "" ] ; then
   echo ""
   echo "Syntax:" 
-  echo "  ./makeindex.sh [[-v <var>] [-e <enc>] -m <lang>] [-d <dp>] [-s <style>] <myindex>"
+  echo "  ./makeindex.sh [[-v <var>] [-e <enc>] -m <lang>]* [-d <dp>] [-s <style>] <myindex>"
   echo ""
   echo "  where <myindex> is the index file name *without* extension."
   echo ""
@@ -42,6 +46,8 @@ TEMP=`mktemp /tmp/xindy.XXXXXX` || exit 1
 
 echo "" >$TEMP.xdy
 
+# Default document processor and index style
+#
 DP="tex"
 STYLE="makeindex"
 
@@ -50,6 +56,7 @@ do
   case "$OPT" in
     "m")
       LOC="$OPTARG"
+      # Language two-letter codes following ISO-639-1
       case $LOC in
         "english")
         ENC_="ascii"
@@ -59,12 +66,82 @@ do
         ENC_="cp1252"
         PRE="fi"
         ;;
+        "german")
+        ENC_="latin1"
+        PRE="de"
+        VAR_="DIN5007-"
+        ;;
+        "belarusian")
+        ENC_="iso88595"
+        PRE="be"
+        ;;
+        "danish")
+        ENC_="latin1"
+        PRE="dk"
+        ;;
+        "french")
+        ENC_="latin9"
+        PRE="fr"
+        ;;
+        "bulgarian")
+        ENC_="iso88595"
+        PRE="bg"
+        ;;
+        "croatian")
+        ENC_="latin2"
+        PRE="hr"
+        ;;
+        "czech")
+        ENC_="latin2"
+        PRE="cs"
+        ;;
+        "esperanto")
+        ENC_="latin3"
+        PRE="eo"
+        ;;
+        "greek")
+        ENC_="iso88597"
+        PRE="el"
+        ;;
+        "macedonian")
+        ENC_="latin2"
+        PRE="mk"
+        ;;
+        "norwegian")
+        ENC_="latin1"
+        PRE="no"
+        ;;
+        "polish")
+        ENC_="latin2"
+        PRE="pl"
+        ;;
+        "russian")
+        ENC_="latin1"
+        PRE="ru"
+        ;;
+        "serbian")
+        ENC_="iso88595"
+        PRE="sr"
+        ;;
+        "slovak")
+        ENC_="latin2"
+        PRE="sk"
+        VAR_="small-"
+        ;;
         "spanish")
         ENC_="latin1"
         PRE="es"
         VAR_="traditional-"
         ;;
-      esac
+        "swedish")
+        ENC_="latin1"
+        PRE="se"
+        ;;
+        "ukrainian")
+        ENC_="koi8-u"
+        PRE="uk"
+        ;;
+     esac
       IGNORESPECIAL="$IGNORESPECIAL \"$PRE-ignore-special\"" 
       ALPHABETIZE="$ALPHABETIZE \"$PRE-alphabetize\"" 
       RESOLVEDIACRITICS="$RESOLVEDIACRITICS \"$PRE-resolve-diacritics\"" 
@@ -77,9 +154,25 @@ do
         VAR=$VAR_  
       fi
 
-      # Create file containing both locale and style req's: 
+      #
+      # ** Create file(s) containing locale-related req's: **
+      #
+      # This file contains:
+      # - the document processor specific stuff that was not 
+      #   generated (correctly) automatically;
+      # - a call to inputenc/<encoding>.xdy, which was generated
+      #   automatically by make-enc-rules.pl.
+      # This file is *created by hand for every language* 
+      # (and doc processor, variant and encoding)
+      #
       echo "(require \"lang/$LOC/$DP-$VAR$ENC.xdy\")" >>$TEMP.xdy
+      #
+      # This file will contain the language and encoding and variant 
+      # specific stuff. Nothing document specific here. Generated
+      # automatically by make-rules.pl.
+      #
       echo "(require \"lang/$LOC/$VAR$ENC.xdy\")" >>$TEMP.xdy
+
       ENC=""
       VAR=""
       ;;
@@ -107,7 +200,8 @@ do
   esac
 done
 
-
+#
+# Default language:
 #
 if [ "$LOC" = "" ] ; then
   LOC="english"
@@ -129,6 +223,9 @@ DATA=$1
 
 tex2xindy <$DATA.idx >$DATA.raw
 
+#
+# Language/variant sorting rules, possibly multi:
+#
 echo "(define-sort-rule-orientations (forward backward forward forward))" \
 	>>$TEMP.xdy
 echo "(use-rule-set :run 0 :rule-set \
@@ -140,6 +237,9 @@ echo "(use-rule-set :run 2 :rule-set \
 echo "(use-rule-set :run 3 :rule-set \
 	($RESOLVESPECIAL))" >>$TEMP.xdy
 
+#
+# The index style chosen:
+#
 echo "(require \"styles/$STYLE.xdy\")" >>$TEMP.xdy
 
 xindy $TEMP.xdy $DATA.raw
