@@ -1,0 +1,82 @@
+MAKE-RULES
+
+This package contains the following:
+
+1. A Perl script to transform a description of a (language-specific)
+alphabet into a set of sorting rules for xindy. Alphabets for some languages
+are also provided.
+
+2. A Perl script to generate sets of rules which are needed in combination
+with the LaTeX `inputenc' package.
+
+
+INSTALLATION INSTRUCTIONS
+
+Requirements:
+- TeX and LaTeX
+- Perl 5 or higher
+- GNU make or an equivalent `make' program
+- for some files: GNU recode 3.5 or higher
+- xindy 2.0 or higher
+
+1. Installation of alphabets
+
+- Change dir to alphabets/ and check if the provided alphabets (in *.pl
+  files) are according to your wishes. If you want to make modifications,
+  please have a look at alphabets/test1/test1.pl.
+
+- Check the Makefile, especially the variable INSTDIR.
+
+- Type `make all'.
+
+- Type `make install'.
+
+
+2. Installation of inputenc rules
+
+- Change dir to inputenc/.
+
+- Check the Makefile, especially the variable INSTDIR.
+
+- Type `make all'.
+
+- Type `make install'.
+
+- As the `inputenc' package may change in the future, it is recommend to
+  re-make these rules whenever you upgrade your TeX system.
+
+
+3. Testing
+
+- Change dir to back to the top-level directory.
+
+- Type `make'.
+
+- The contents of the sorted index file `example.ind' should be equal to
+  `example.cmp'. You can check this with the command
+  'diff example.cmp example.ind' which should give NO output.
+
+
+4. Even more testing (optional)
+
+- Change dir to the inputenc/ sub-directory.
+
+- Type `make test'. No error messages should appear.
+
+- Change dir to the alphabets/ sub-directory.
+
+- Type `make <language>/[<variant>-]<encoding>.ind'
+  (Example: make german/din5007-latin1.ind), depending on the file you want
+  to check. Or type `make test' if you want to check all of them (this might
+  take some time).
+  
+- Now check the resulting *.ind file if the sorting result is okay. If not,
+  the corresponding log file (*.xlg) might give a clue as to what went wrong.
+
+5. Usage
+
+- Copy the file `example.xdy' somewhere and modify it according to your
+  wishes! Simple as that!
+
+--
+Thomas Henlich (thenlich@rcs.urz.tu-dresden.de)
