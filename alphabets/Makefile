@@ -165,7 +165,7 @@ DOCS= $(DOCSLATIN1) $(DOCSLATIN2) $(DOCSLATIN5) \
 
 DOCSUTF8LAT= \
   albanian/utf8-doc.tex \
-  croatian/utf8-doc.tex \
+  croatian/utf8-kl-doc.tex \
   czech/utf8-doc.tex \
   danish/utf8-doc.tex \
   dutch/ij-as-ij-utf8-doc.tex \
@@ -345,7 +345,7 @@ romanian/cp1250.pl : romanian/utf8.pl
 	sed -e 's/@u{\([^}]*\)}//g;' <$< | \
 	iconv --from-code=UTF-8 --to-code=KOI8-U >$@
 
-romanian/utf8-kl-doc.tex : romanian/utf8-doc.tex
+%utf8-kl-doc.tex : %utf8-doc.tex
 	sed -f utf8-omega-kludge.sed <$< >$@
 
 # %tex.pl : %utf8.pl utf8-to-tex.sed
