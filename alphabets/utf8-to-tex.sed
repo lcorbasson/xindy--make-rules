@@ -65,3 +65,25 @@ s/ă/\\u a/g;
 s/Ă/\\u A/g;
 s/î/\\^\\i/g;
 s/Î/\\^I/g;
+# dutch:
+s/é/\\\\\\\'e/g;
+s/É/\\\\\\\'E/g;
+s/ĳ/ij/g;
+s/Ĳ/IJ/g;
+# croatian:
+s/ć/\\\\\\\'c/g;
+s/Ć/\\\\\\\'C/g;
+s/đ/\\dj{}/g;
+s/Đ/\\DJ{}/g;
+s/ǆ/d\\v z/g;
+s/ǅ/D\\v z/g;
+s/Ǆ/D\\v Z/g;
+s/ǉ/lj/g;
+s/ǈ/Lj/g;
+s/Ǉ/LJ/g;
+s/ǌ/nj/g;
+s/ǋ/Nj/g;
+s/Ǌ/NJ/g;
+s/ǳ/dz/g;
+s/ǲ/Dz/g;
+s/Ǳ/DZ/g;

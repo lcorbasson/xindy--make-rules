@@ -82,8 +82,7 @@ XDYSUTF8= \
   spanish/modern-utf8.xdy spanish/traditional-utf8.xdy \
   swedish/utf8.xdy \
   turkish/utf8.xdy \
-  ukrainian/utf8.xdy \
-  dutch/utf8.xdy 
+  ukrainian/utf8.xdy
 
 XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSLATIN5) \
   $(XDYSCYR) $(XDYSOTHER)
@@ -97,8 +96,10 @@ utf8 : $(XDYSUTF8)
 
 DOCSLATIN1= \
   albanian/latin1-doc.tex \
+  croatian/tex-doc.tex \
   danish/latin1-doc.tex \
   english/ascii-doc.tex \
+  dutch/tex-doc.tex \
   esperanto/tex-doc.tex \
   finnish/cp1252-doc.tex \
   french/cp1252-doc.tex \
@@ -112,11 +113,9 @@ DOCSLATIN1= \
   russian/translit-iso-tex-doc.tex \
   spanish/modern-latin1-doc.tex spanish/traditional-latin1-doc.tex \
   swedish/latin1-doc.tex \
-  turkish/tex-doc.tex \
-  dutch/latin1-doc.tex \
-
+  turkish/tex-doc.tex
+  
 DOCSLATIN2= \
-  croatian/latin2-doc.tex \
   czech/latin2-doc.tex \
   hungarian/latin2-doc.tex \
   lower-sorbian/latin2-doc.tex \
