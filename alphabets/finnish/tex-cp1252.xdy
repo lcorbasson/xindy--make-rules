@@ -6,6 +6,7 @@
 ;; mappings in one of the two other modules to map them to the actual
 ;; position.
 
+(require "tex/inputenc/cp1252.xdy")
 
 (merge-rule "\aa"  "å" :string)
 (merge-rule "\AA"  "Å" :string)

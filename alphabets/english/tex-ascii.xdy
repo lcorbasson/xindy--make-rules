@@ -6,6 +6,8 @@
 ;; mappings in one of the two other modules to map them to the actual
 ;; position.
 
+(require "tex/inputenc/latin1.xdy")
+
 ;; To handle \citeindextrue index entries within {} 
 ;; (make it better if you can!)
 
