@@ -75,9 +75,12 @@ XDYSUTF8= \
   finnish/utf8.xdy \
   french/utf8.xdy \
   general/utf8.xdy \
+  georgian/utf8.xdy \
   german/din5007-utf8.xdy german/duden-utf8.xdy \
   greek/translit-utf8.xdy \
   greek/utf8.xdy \
+  gypsy/northrussian-utf8.xdy \
+  hausa/utf8.xdy \
   hungarian/utf8.xdy \
   icelandic/utf8.xdy \
   italian/utf8.xdy \
@@ -88,6 +91,7 @@ XDYSUTF8= \
   lithuanian/utf8.xdy \
   lower-sorbian/utf8.xdy \
   macedonian/utf8.xdy \
+  mongolian/cyrillic-utf8.xdy \
   norwegian/utf8.xdy \
   polish/utf8.xdy \
   portuguese/utf8.xdy \
@@ -101,7 +105,8 @@ XDYSUTF8= \
   swedish/utf8.xdy \
   turkish/utf8.xdy \
   upper-sorbian/utf8.xdy \
-  ukrainian/utf8.xdy
+  ukrainian/utf8.xdy \
+  vietnamese/utf8.xdy
 
 XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSLATIN4) $(XDYSLATIN5) \
   $(XDYSCYR) $(XDYSOTHER)
@@ -178,6 +183,8 @@ DOCSUTF8LAT= \
   general/utf8-doc.tex \
   german/din5007-utf8-doc.tex german/duden-utf8-doc.tex \
   greek/translit-utf8-doc.tex \
+  gypsy/northrussian-utf8-doc.tex \
+  hausa/utf8-doc.tex \
   hungarian/utf8-doc.tex \
   icelandic/utf8-doc.tex \
   italian/utf8-doc.tex \
@@ -196,17 +203,20 @@ DOCSUTF8LAT= \
   spanish/modern-utf8-doc.tex spanish/traditional-utf8-doc.tex \
   swedish/utf8-doc.tex \
   turkish/utf8-doc.tex \
-  upper-sorbian/utf8-doc.tex
+  upper-sorbian/utf8-doc.tex \
+  vietnamese/utf8-doc.tex
   
 DOCSUTF8CYR= \
   belarusian/utf8-doc.tex \
   bulgarian/utf8-doc.tex \
   macedonian/utf8-doc.tex \
+  mongolian/cyrillic-utf8-doc.tex \
   russian/utf8-doc.tex \
   serbian/utf8-doc.tex \
   ukrainian/utf8-doc.tex
 
 DOCSUTF8OTHER= \
+  georgian/utf8-doc.tex \
   greek/utf8-doc.tex \
   klingon/tex-doc.tex
 
