@@ -169,7 +169,7 @@ testutf8 : $(INDUTF8S)
 %.ps : %.dvi
 	dvips $<
 
-%.xdy %-doc.tex %.raw : %.pl
+%.xdy %-doc.tex %-test.xdy %.raw : %.pl
 	perl $< $*
 
 %.ind %.xlg : %.raw %-test.xdy
@@ -180,9 +180,9 @@ newcmp : $(CMPS)
 %.cmp : %
 	cp $< $@
 
-%-test.xdy :
-	echo '(require "lang/$*.xdy")' >$@
-	cat test.xdy >>$@
+#%-test.xdy :
+#	echo '(require "lang/$*.xdy")' >$@
+#	cat test.xdy >>$@
 
 %cp1250.pl : %latin2.pl
 	recode latin2..cp1250 <$< >$@

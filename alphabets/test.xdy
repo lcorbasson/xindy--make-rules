@@ -1,16 +1,3 @@
-;; apply rules left-to-right or right-to-left?
-;;                              run 0   run 1    run 2   run 3
-(define-sort-rule-orientations (forward backward forward forward))
-
-;; define order of sorting runs
-(use-rule-set :run 0
-	      :rule-set ("alphabetize" "ignore-special"))
-(use-rule-set :run 1
-	      :rule-set ("resolve-diacritics" "ignore-special"))
-(use-rule-set :run 2
-	      :rule-set ("resolve-case" "ignore-special"))
-(use-rule-set :run 3
-	      :rule-set ("resolve-special"))
 
 ;; define other stuff
 (define-attributes ("default"))
