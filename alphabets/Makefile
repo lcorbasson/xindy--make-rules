@@ -20,8 +20,8 @@ XDYSLATIN1= \
   russian/translit-iso-tex.xdy \
   spanish/modern-latin1.xdy spanish/traditional-latin1.xdy \
   swedish/latin1.xdy \
-  general/latin1.xdy
-  dutch/latin1.xdy \
+  general/latin1.xdy \
+  dutch/latin1.xdy 
 
 XDYSLATIN2= \
   croatian/latin2.xdy croatian/cp1250.xdy \
@@ -82,8 +82,8 @@ XDYSUTF8= \
   spanish/modern-utf8.xdy spanish/traditional-utf8.xdy \
   swedish/utf8.xdy \
   turkish/utf8.xdy \
-  ukrainian/utf8.xdy
-  dutch/utf8.xdy \
+  ukrainian/utf8.xdy \
+  dutch/utf8.xdy 
 
 XDYS= $(XDYSLATIN1) $(XDYSLATIN2) $(XDYSLATIN3) $(XDYSLATIN5) \
   $(XDYSCYR) $(XDYSOTHER)
